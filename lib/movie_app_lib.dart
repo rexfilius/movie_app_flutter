@@ -20,6 +20,7 @@ export 'app/ui/screens/movies/screens/movies_screen.dart';
 export 'app/ui/screens/movies/components/movies_upcoming_builder.dart';
 export 'app/ui/screens/movies/components/movies_popular_builder.dart';
 export 'app/ui/screens/movies/components/movies_upcoming_card.dart';
+export 'app/ui/screens/movies/components/movies_popular_card.dart';
 
 /// Movie Favorites
 export 'app/ui/screens/movie_favorite/screens/movie_favorites.dart';

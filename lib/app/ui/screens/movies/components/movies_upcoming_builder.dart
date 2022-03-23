@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +40,7 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
             return Text(snapshot.error.toString());
           }
         }
-        return const CircularProgressIndicator();
+        return const Text('Loading movie list...');
       },
     );
   }

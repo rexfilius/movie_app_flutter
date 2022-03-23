@@ -1,11 +1,6 @@
 import 'dart:convert';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
-MoviesUpcoming moviesUpcomingFromJson(String str) =>
-    MoviesUpcoming.fromJson(json.decode(str));
-
-String moviesUpcomingToJson(MoviesUpcoming data) => json.encode(data.toJson());
-
 class MoviesUpcoming {
   MoviesUpcoming({
     this.dates,

@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final moviesPopular = moviesPopularFromJson(jsonString);
-
 import 'dart:convert';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
@@ -45,5 +41,3 @@ class MoviesPopular {
     return map;
   }
 }
-
-

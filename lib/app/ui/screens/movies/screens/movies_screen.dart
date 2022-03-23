@@ -9,12 +9,10 @@ class MoviesScreen extends StatefulWidget {
 }
 
 class _MoviesScreenState extends State<MoviesScreen> {
-  // late Future<MoviesPopular> _moviesPopular;
 
   @override
   void initState() {
     super.initState();
-    //_moviesPopular = getPopularMovies();
   }
 
   @override
@@ -22,66 +20,21 @@ class _MoviesScreenState extends State<MoviesScreen> {
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text('Coming Soon'),
-          const SizedBox(height: 8.0),
-          const SizedBox(
+        children: const [
+          Text('Coming Soon'),
+          SizedBox(height: 8.0),
+          SizedBox(
             height: 185,
             child: UpcomingMoviesBuilder(),
           ),
-          const Text('Coming Soon'),
-          const SizedBox(height: 8.0),
+          Text('Coming Soon'),
+          SizedBox(height: 8.0),
           SizedBox(
-            height: 100,
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: movies.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(movies[index]),
-                );
-              },
-            ),
+            height: 220,
+            child: PopularMovieBuilder(),
           ),
         ],
       ),
     );
   }
 }
-
-final List<String> movies = [
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen'
-];
-
-/// TEST CODE TO CONFIRM API CALL IS A SUCCESS
-// Center(
-// child: FutureBuilder<MoviesPopular>(
-// future: _moviesPopular,
-// builder: (context, snapshot) {
-// if (snapshot.hasData) {
-// return ListView.builder(
-// itemCount: snapshot.data?.results?.length,
-// itemBuilder: (context, index) {
-// return Padding(
-// padding: const EdgeInsets.all(8.0),
-// child: Text('${snapshot.data?.results?[index]}'),
-// );
-// },
-// );
-// } else if (snapshot.hasError) {
-// return Text('${snapshot.error}');
-// }
-// return const CircularProgressIndicator();
-// },
-// ),
-// );
