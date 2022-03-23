@@ -9,7 +9,7 @@ void main() async {
   await Hive.openBox(HiveDatabase.name);
 
   runApp(const MyApp());
-  
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: AppColors.black,
     systemNavigationBarColor: AppColors.black,
