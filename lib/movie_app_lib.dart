@@ -12,6 +12,9 @@ export 'app/data/network/models/movies_popular.dart';
 export 'app/data/network/models/movies_upcoming.dart';
 export 'app/data/network/api/movie_api.dart';
 
+/// Common widgets across screens
+export 'app/ui/common_widgets/movie_card.dart';
+
 /// Home Screen
 export 'app/ui/screens/home/home_screen.dart';
 
@@ -19,8 +22,6 @@ export 'app/ui/screens/home/home_screen.dart';
 export 'app/ui/screens/movies/screens/movies_screen.dart';
 export 'app/ui/screens/movies/components/movies_upcoming_builder.dart';
 export 'app/ui/screens/movies/components/movies_popular_builder.dart';
-export 'app/ui/screens/movies/components/movies_upcoming_card.dart';
-export 'app/ui/screens/movies/components/movies_popular_card.dart';
 
 /// Movie Favorites
 export 'app/ui/screens/movie_favorite/screens/movie_favorites.dart';

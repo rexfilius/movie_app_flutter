@@ -29,10 +29,10 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data?.results?.length,
               itemBuilder: (context, index) {
-                return UpcomingMovieCard(
+                return MovieCard(
                   movie: snapshot.data!.results![index],
-                  cardHeight: 150,
-                  cardWidth: 0.75 * screenWidth,
+                  cardHeight: 210,
+                  cardWidth: 0.5 * screenWidth,
                 );
               },
             );

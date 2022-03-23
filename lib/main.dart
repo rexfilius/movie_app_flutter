@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
 void main() {
   runApp(const MyApp());
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: AppColors.black,
+    systemNavigationBarColor: AppColors.black,
+  ));
 }
 
 class MyApp extends StatelessWidget {

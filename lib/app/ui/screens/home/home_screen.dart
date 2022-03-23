@@ -21,14 +21,21 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.black,
         bottom: TabBar(
           controller: _tabController,
           tabs: const <Widget>[
             Tab(
-              child: Text('Movies'),
+              child: Text(
+                'Movies',
+                style: AppStyles.movieTitleText,
+              ),
             ),
             Tab(
-              child: Text('My List'),
+              child: Text(
+                'My List',
+                style: AppStyles.movieTitleText,
+              ),
             ),
           ],
         ),

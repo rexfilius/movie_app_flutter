@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:movie_app_flutter/movie_app_lib.dart';
 
-class UpcomingMovieCard extends StatelessWidget {
-  const UpcomingMovieCard({
+class MovieCard extends StatelessWidget {
+  const MovieCard({
     required this.movie,
-    required this.cardHeight,
     required this.cardWidth,
+    required this.cardHeight,
     Key? key,
   }) : super(key: key);
 
@@ -21,13 +21,6 @@ class UpcomingMovieCard extends StatelessWidget {
       margin: const EdgeInsets.all(8.0),
       width: cardWidth,
       height: cardHeight,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          width: 2.0,
-          color: Colors.red,
-        ),
-      ),
       child: GestureDetector(
         onTap: () {
           Navigator.pushNamed(
@@ -36,10 +29,22 @@ class UpcomingMovieCard extends StatelessWidget {
             arguments: movie,
           );
         },
-        child: Stack(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            CachedNetworkImage(imageUrl: baseUrlImage + "${movie.posterPath}"),
-            Text(movie.title ?? 'Null'),
+            SizedBox(
+              width: 150,
+              height: 170,
+              child: CachedNetworkImage(
+                imageUrl: baseUrlImage + "${movie.posterPath}",
+              ),
+            ),
+            Flexible(
+              child: Text(
+                movie.title ?? "Null",
+                style: AppStyles.movieTitleText,
+              ),
+            ),
           ],
         ),
       ),

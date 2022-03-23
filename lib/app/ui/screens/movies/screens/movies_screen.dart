@@ -9,7 +9,6 @@ class MoviesScreen extends StatefulWidget {
 }
 
 class _MoviesScreenState extends State<MoviesScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -17,23 +16,44 @@ class _MoviesScreenState extends State<MoviesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: const [
-          Text('Coming Soon'),
-          SizedBox(height: 8.0),
-          SizedBox(
-            height: 185,
-            child: UpcomingMoviesBuilder(),
-          ),
-          Text('Coming Soon'),
-          SizedBox(height: 8.0),
-          SizedBox(
-            height: 220,
-            child: PopularMovieBuilder(),
-          ),
-        ],
+    return Container(
+      color: AppColors.black,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Coming Soon',
+                  style: AppStyles.movieListHeader,
+                ),
+              ),
+            ),
+            SizedBox(height: 8.0),
+            SizedBox(
+              height: 220,
+              child: UpcomingMoviesBuilder(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Trending Now',
+                  style: AppStyles.movieListHeader,
+                ),
+              ),
+            ),
+            SizedBox(height: 8.0),
+            SizedBox(
+              height: 220,
+              child: PopularMovieBuilder(),
+            ),
+          ],
+        ),
       ),
     );
   }

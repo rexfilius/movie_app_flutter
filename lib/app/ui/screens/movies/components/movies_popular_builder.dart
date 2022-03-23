@@ -29,7 +29,7 @@ class _PopularMovieBuilderState extends State<PopularMovieBuilder> {
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data?.results?.length,
               itemBuilder: (context, index) {
-                return PopularMovieCard(
+                return MovieCard(
                   movie: snapshot.data!.results![index],
                   cardHeight: 210,
                   cardWidth: 0.5 * screenWidth,
