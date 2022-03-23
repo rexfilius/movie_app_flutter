@@ -25,7 +25,7 @@ class Result {
   String? overview;
   double? popularity;
   String? posterPath;
-  DateTime? releaseDate;
+  String? releaseDate;
   String? title;
   bool? video;
   double? voteAverage;
@@ -67,6 +67,15 @@ class Result {
     map["vote_average"] = voteAverage;
     map["vote_count"] = voteCount;
     return map;
+  }
+
+  @override
+  String toString() {
+    return "MovieResult(adult-$adult backdropPath-$backdropPath "
+        "genreIds-$genreIds id-$id originalLanguage-$originalLanguage "
+        "originalTitle-$originalTitle overview-$overview popularity-$popularity "
+        "posterPath-$posterPath releaseDate-$releaseDate title-$title "
+        "video-$video voteAverage-$voteAverage voteCount-$voteCount)";
   }
 }
 

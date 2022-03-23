@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+/lib/app/api_token
 
 # IntelliJ related
 *.iml
