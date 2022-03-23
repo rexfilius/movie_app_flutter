@@ -12,6 +12,10 @@ export 'app/data/network/models/movies_popular.dart';
 export 'app/data/network/models/movies_upcoming.dart';
 export 'app/data/network/api/movie_api.dart';
 
+/// Data - Database
+export 'app/data/database/model/movie.dart';
+export 'app/data/database/hivedb/hive_database.dart';
+
 /// Common widgets across screens
 export 'app/ui/common_widgets/movie_card.dart';
 
