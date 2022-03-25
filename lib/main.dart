@@ -6,7 +6,7 @@ import 'package:movie_app_flutter/movie_app_lib.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(MovieAdapter());
-  await Hive.openBox(HiveDatabase.name);
+  await Hive.openBox<Movie>(movieDatabaseName);
 
   runApp(const MyApp());
 

@@ -1,13 +1,7 @@
-import 'dart:convert';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
-MoviesPopular moviesPopularFromJson(String str) =>
-    MoviesPopular.fromJson(json.decode(str));
-
-String moviesPopularToJson(MoviesPopular data) => json.encode(data.toJson());
-
-class MoviesPopular {
-  MoviesPopular({
+class MoviesTrending {
+  MoviesTrending({
     this.page,
     this.results,
     this.totalPages,
@@ -19,8 +13,8 @@ class MoviesPopular {
   int? totalPages;
   int? totalResults;
 
-  factory MoviesPopular.fromJson(Map<String, dynamic> json) {
-    return MoviesPopular(
+  factory MoviesTrending.fromJson(Map<String, dynamic> json) {
+    return MoviesTrending(
       page: json["page"],
       results:
           List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
@@ -31,13 +25,14 @@ class MoviesPopular {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['page'] = page;
+
+    map["page"] = page;
     if (results != null) {
-      map['results'] = results?.map((e) => e.toJson()).toList();
+      map["results"] = results?.map((e) => e.toJson()).toList();
     }
-    // List<dynamic>.from(results.map((x) => x.toJson()))
-    map['total_pages'] = totalPages;
-    map['total_results'] = totalResults;
+    map["total_pages"] = totalPages;
+    map["total_results"] = totalResults;
+
     return map;
   }
 }

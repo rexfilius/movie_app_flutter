@@ -11,6 +11,10 @@ class MovieDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as Result;
     double screenWidth = MediaQuery.of(context).size.width;
+
+    final movie = convertJsonResultToMovie(args);
+    final movieList = HiveDatabase().getMovies();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.black,
@@ -32,7 +36,18 @@ class MovieDetailScreen extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (movieList.contains(movie)) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('${args.title} already added to favorites'),
+                    ));
+                  } else if (!movieList.contains(movie)) {
+                    HiveDatabase().saveMovie(movie);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('${args.title} added to favorites'),
+                    ));
+                  }
+                },
                 icon: const Icon(
                   Icons.save,
                   color: AppColors.white,

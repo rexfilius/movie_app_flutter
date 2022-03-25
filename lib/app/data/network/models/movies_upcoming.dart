@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
 class MoviesUpcoming {

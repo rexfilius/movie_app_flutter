@@ -1,27 +1,27 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 
-class PopularMovieBuilder extends StatefulWidget {
-  const PopularMovieBuilder({Key? key}) : super(key: key);
+class TrendingMoviesBuilder extends StatefulWidget {
+  const TrendingMoviesBuilder({Key? key}) : super(key: key);
 
   @override
-  State<PopularMovieBuilder> createState() => _PopularMovieBuilderState();
+  State<TrendingMoviesBuilder> createState() => _TrendingMoviesBuilderState();
 }
 
-class _PopularMovieBuilderState extends State<PopularMovieBuilder> {
-  late Future<MoviesPopular> _moviesPopular;
+class _TrendingMoviesBuilderState extends State<TrendingMoviesBuilder> {
+  late Future<MoviesTrending> _moviesTrending;
 
   @override
   void initState() {
     super.initState();
-    _moviesPopular = getPopularMovies();
+    _moviesTrending = getTrendingMovies();
   }
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return FutureBuilder<MoviesPopular>(
-      future: _moviesPopular,
+    return FutureBuilder<MoviesTrending>(
+      future: _moviesTrending,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {

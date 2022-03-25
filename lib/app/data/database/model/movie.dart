@@ -40,7 +40,9 @@ class Movie extends HiveObject {
   @HiveField(11)
   int? voteCount;
 
-  // String? posterPath;
+  @HiveField(12)
+  String? posterPath;
+
   // String? backdropPath;
 
   Movie({
@@ -56,5 +58,6 @@ class Movie extends HiveObject {
     this.video,
     this.voteAverage,
     this.voteCount,
+    this.posterPath,
   });
 }

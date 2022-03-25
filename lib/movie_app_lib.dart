@@ -6,10 +6,13 @@ export 'app/routes/app_routes_map.dart';
 export 'app/ui/apptheme/app_colors.dart';
 export 'app/ui/apptheme/app_styles.dart';
 
+/// Utility classes
+export 'app/utils/util_functions.dart';
+
 /// Data - Network
 export 'app/data/network/models/movie_result.dart';
-export 'app/data/network/models/movies_popular.dart';
 export 'app/data/network/models/movies_upcoming.dart';
+export 'app/data/network/models/movies_trending.dart';
 export 'app/data/network/api/movie_api.dart';
 
 /// Data - Database
@@ -25,10 +28,11 @@ export 'app/ui/screens/home/home_screen.dart';
 /// Movies Screen
 export 'app/ui/screens/movies/screens/movies_screen.dart';
 export 'app/ui/screens/movies/components/movies_upcoming_builder.dart';
-export 'app/ui/screens/movies/components/movies_popular_builder.dart';
+export 'app/ui/screens/movies/components/movies_trending_builder.dart';
 
-/// Movie Favorites
+/// Movie Favorites Screen
 export 'app/ui/screens/movie_favorite/screens/movie_favorites.dart';
+export 'app/ui/screens/movie_favorite/components/movie_list.dart';
 
-/// Movie Detail
+/// Movie Detail Screen
 export 'app/ui/screens/movie_detail/screens/movie_detail.dart';

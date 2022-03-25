@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
 class MovieFavoritesScreen extends StatefulWidget {
@@ -16,47 +17,33 @@ class _MovieFavoritesScreenState extends State<MovieFavoritesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Text('Likes'),
-        const SizedBox(height: 8.0),
-        Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+    final movieList = HiveDatabase().getMovies();
+    return Container(
+      color: AppColors.black,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Likes',
+                style: AppStyles.movieListHeader,
+              ),
             ),
-            itemCount: likes.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(likes[index]),
-              );
-            },
           ),
-        ),
-      ],
+          const SizedBox(height: 8.0),
+          Expanded(
+            child: ValueListenableBuilder<Box<Movie>>(
+              valueListenable: HiveDatabase().getMovieBox().listenable(),
+              builder: (context, box, widget) {
+                return MovieList(movieList: movieList);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
-
-final List<String> likes = [
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-  'Olympus has fallen',
-];
