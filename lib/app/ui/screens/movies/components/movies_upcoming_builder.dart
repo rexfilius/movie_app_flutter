@@ -20,6 +20,7 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+
     return FutureBuilder<MoviesUpcoming>(
       future: _moviesUpcoming,
       builder: (context, snapshot) {
@@ -29,10 +30,10 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data?.results?.length,
               itemBuilder: (context, index) {
-                return MovieCard(
+                return UpcomingMovieCard(
                   movie: snapshot.data!.results![index],
                   cardHeight: 210,
-                  cardWidth: 0.5 * screenWidth,
+                  cardWidth: 0.8 * screenWidth,
                 );
               },
             );

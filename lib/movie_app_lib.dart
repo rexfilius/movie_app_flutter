@@ -33,6 +33,7 @@ export 'app/ui/screens/home/home_screen.dart';
 export 'app/ui/screens/movies/screens/movies_screen.dart';
 export 'app/ui/screens/movies/components/movies_upcoming_builder.dart';
 export 'app/ui/screens/movies/components/movies_trending_builder.dart';
+export 'app/ui/screens/movies/components/upcoming_movie_card.dart';
 
 /// Movie Favorites Screen
 export 'app/ui/screens/movie_favorite/screens/movie_favorites.dart';

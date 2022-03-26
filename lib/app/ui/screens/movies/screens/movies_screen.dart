@@ -23,7 +23,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
           mainAxisSize: MainAxisSize.min,
           children: const [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(top: 8.0, left: 16),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -38,7 +38,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
               child: UpcomingMoviesBuilder(),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(top: 8.0, left: 16),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
