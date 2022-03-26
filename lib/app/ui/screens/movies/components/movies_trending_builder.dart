@@ -29,7 +29,7 @@ class _TrendingMoviesBuilderState extends State<TrendingMoviesBuilder> {
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data?.results?.length,
               itemBuilder: (context, index) {
-                return MovieCard(
+                return TrendingMovieCard(
                   movie: snapshot.data!.results![index],
                   cardHeight: 0.8 * screenWidth,
                   cardWidth: 0.6 * screenWidth,

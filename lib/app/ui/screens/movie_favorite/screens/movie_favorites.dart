@@ -24,7 +24,7 @@ class _MovieFavoritesScreenState extends State<MovieFavoritesScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.only(top: 8.0, left: 16),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -38,7 +38,7 @@ class _MovieFavoritesScreenState extends State<MovieFavoritesScreen> {
             child: ValueListenableBuilder<Box<Movie>>(
               valueListenable: HiveDatabase().getMovieBox().listenable(),
               builder: (context, box, widget) {
-                return MovieList(movieList: movieList);
+                return MovieDatabaseList(movieDatabaseList: movieList);
               },
             ),
           ),

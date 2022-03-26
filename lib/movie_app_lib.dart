@@ -23,9 +23,6 @@ export 'app/data/network/api/movie_api.dart';
 export 'app/data/database/model/movie.dart';
 export 'app/data/database/hivedb/hive_database.dart';
 
-/// Common widgets across screens
-export 'app/ui/common_widgets/movie_card.dart';
-
 /// Home Screen
 export 'app/ui/screens/home/home_screen.dart';
 
@@ -34,10 +31,12 @@ export 'app/ui/screens/movies/screens/movies_screen.dart';
 export 'app/ui/screens/movies/components/movies_upcoming_builder.dart';
 export 'app/ui/screens/movies/components/movies_trending_builder.dart';
 export 'app/ui/screens/movies/components/upcoming_movie_card.dart';
+export 'app/ui/screens/movies/components/trending_movie_card.dart';
 
 /// Movie Favorites Screen
 export 'app/ui/screens/movie_favorite/screens/movie_favorites.dart';
-export 'app/ui/screens/movie_favorite/components/movie_list.dart';
+export 'app/ui/screens/movie_favorite/components/movie_database_list.dart';
+export 'app/ui/screens/movie_favorite/components/favorite_movie_card.dart';
 
 /// Movie Detail Screen
 export 'app/ui/screens/movie_detail/screens/movie_detail.dart';
