@@ -4,16 +4,21 @@ import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class MovieDetailScreen extends StatelessWidget {
+class MovieDetailScreen extends StatefulWidget {
   const MovieDetailScreen({Key? key}) : super(key: key);
 
   @override
+  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
+}
+
+class _MovieDetailScreenState extends State<MovieDetailScreen> {
+  @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Result;
+    final resultArgs = ModalRoute.of(context)!.settings.arguments as Result;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    final movie = convertJsonResultToMovie(args);
-    final movieList = HiveDatabase().getMovies();
+    //final movie = convertJsonResultToMovie(args);
+    //final movieList = HiveDatabase().getMovies();
 
     return Scaffold(
       appBar: AppBar(
@@ -29,70 +34,72 @@ class MovieDetailScreen extends StatelessWidget {
                 width: 0.6 * screenWidth,
                 height: 185,
                 child: CachedNetworkImage(
-                  imageUrl: baseUrlImage + "${args.posterPath}",
+                  imageUrl: baseUrlImage + "${resultArgs.posterPath}",
                 ),
               ),
             ),
             Align(
               alignment: Alignment.bottomRight,
-              child: IconButton(
-                onPressed: () {
-                  if (movieList.contains(movie)) {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('${args.title} already added to favorites'),
-                    ));
-                  } else if (!movieList.contains(movie)) {
-                    HiveDatabase().saveMovie(movie);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('${args.title} added to favorites'),
-                    ));
+              child: FutureBuilder<Movie>(
+                future: convertJsonResultToMovie(resultArgs),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return IconButton(
+                      onPressed: () {
+                        HiveDatabase().saveMovie(snapshot.data!);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('${resultArgs.title} added to favorites'),
+                        ));
+                      },
+                      icon: const Icon(
+                        Icons.save,
+                        color: AppColors.white,
+                      ),
+                    );
                   }
+                  return const Icon(Icons.http);
                 },
-                icon: const Icon(
-                  Icons.save,
-                  color: AppColors.white,
-                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                args.title ?? "Null",
+                resultArgs.title ?? "Null",
                 style: AppStyles.movieTitleText,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                args.overview ?? "Null",
+                resultArgs.overview ?? "Null",
                 style: AppStyles.movieTitleText,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                args.originalTitle ?? "Null",
+                resultArgs.originalTitle ?? "Null",
                 style: AppStyles.movieTitleText,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                args.releaseDate ?? "Null",
+                resultArgs.releaseDate ?? "Null",
                 style: AppStyles.movieTitleText,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "${args.popularity}",
+                "${resultArgs.popularity}",
                 style: AppStyles.movieTitleText,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "${args.voteCount}",
+                "${resultArgs.voteCount}",
                 style: AppStyles.movieTitleText,
               ),
             ),
@@ -102,3 +109,22 @@ class MovieDetailScreen extends StatelessWidget {
     );
   }
 }
+
+// IconButton(
+// onPressed: () {
+// if (movieList.contains(movie)) {
+// ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+// content: Text('${args.title} already added to favorites'),
+// ));
+// } else if (!movieList.contains(movie)) {
+// HiveDatabase().saveMovie(movie);
+// ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+// content: Text('${args.title} added to favorites'),
+// ));
+// }
+// },
+// icon: const Icon(
+// Icons.save,
+// color: AppColors.white,
+// ),
+// ),

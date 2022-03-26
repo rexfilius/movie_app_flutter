@@ -1,15 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
-Movie convertJsonResultToMovie(Result result) {
-  String filePath = '';
-  saveImage(result).then((value) {
-    return filePath = value;
-  });
+/// This function converts the Json response model class - Result - to the
+/// database model class - Movie.
+Future<Movie> convertJsonResultToMovie(Result result) async {
+  final filePath = await saveImageToAppDirectory(result);
 
   return Movie(
     adult: result.adult,
@@ -28,6 +28,8 @@ Movie convertJsonResultToMovie(Result result) {
   );
 }
 
+/// This function returns the file path of where the movie image will be saved
+/// on the app directory
 Future<String> getImageFilePath(Result result) async {
   final directory = await getApplicationDocumentsDirectory();
   final filePath = directory.path; //directory.path + 'images';
@@ -36,9 +38,10 @@ Future<String> getImageFilePath(Result result) async {
   return filePathAndName;
 }
 
-Future<String> saveImage(Result result) async {
+/// This function downloads the movie image and saves it to the app's directory
+Future<String> saveImageToAppDirectory(Result result) async {
   HttpClient httpClient = HttpClient();
-  String filePath;
+  String imageFilePath;
   String imageUrl;
 
   try {
@@ -48,17 +51,30 @@ Future<String> saveImage(Result result) async {
 
     if (response.statusCode == 200) {
       var bytes = await consolidateHttpClientResponseBytes(response);
-      filePath = await getImageFilePath(result);
-      File file = File(filePath);
+      imageFilePath = await getImageFilePath(result);
+      File file = File(imageFilePath);
       await file.writeAsBytes(bytes);
     } else {
-      filePath = 'Error code: ' + response.statusCode.toString();
+      imageFilePath = 'Error code: ' + response.statusCode.toString();
     }
   } catch (exception) {
-    filePath = 'cannot fetch url' + exception.toString();
+    imageFilePath = 'cannot fetch url' + exception.toString();
   }
-  return filePath;
+  return imageFilePath;
 }
 
-Result result = Result();
-var ff = getImageFilePath(result);
+Future<bool> isPermissionGranted() async {
+  var status = await Permission.storage.request();
+  switch (status) {
+    case PermissionStatus.denied:
+      return false;
+    case PermissionStatus.granted:
+      return true;
+    case PermissionStatus.restricted:
+      return false;
+    case PermissionStatus.limited:
+      return false;
+    case PermissionStatus.permanentlyDenied:
+      return false;
+  }
+}

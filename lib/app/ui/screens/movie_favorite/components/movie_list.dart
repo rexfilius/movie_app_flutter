@@ -30,7 +30,7 @@ class MovieList extends StatelessWidget {
   }
 }
 
-class FavMovieCard extends StatelessWidget {
+class FavMovieCard extends StatefulWidget {
   const FavMovieCard({
     required this.movie,
     required this.cardWidth,
@@ -43,18 +43,23 @@ class FavMovieCard extends StatelessWidget {
   final double cardHeight;
 
   @override
+  State<FavMovieCard> createState() => _FavMovieCardState();
+}
+
+class _FavMovieCardState extends State<FavMovieCard> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
       margin: const EdgeInsets.all(8.0),
-      width: cardWidth,
-      height: cardHeight,
+      width: widget.cardWidth,
+      height: widget.cardHeight,
       child: GestureDetector(
         onTap: () {
           Navigator.pushNamed(
             context,
             AppRoutes.movieDetailScreen,
-            arguments: movie,
+            arguments: widget.movie,
           );
         },
         child: Column(
@@ -64,12 +69,13 @@ class FavMovieCard extends StatelessWidget {
               child: SizedBox(
                 width: 150,
                 height: 170,
-                child: Image.file(File(movie.posterPath ?? '')),
+                child: Image.file(File(widget.movie.posterPath ?? '')),
               ),
             ),
+            // Image.file(File(movie.posterPath ?? ''))
             Flexible(
               child: Text(
-                movie.title ?? "Null",
+                widget.movie.title ?? "Null",
                 style: AppStyles.movieTitleText,
               ),
             ),
