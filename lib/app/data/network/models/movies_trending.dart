@@ -1,5 +1,7 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
+/// This is the model class that represents the Json response from the API
+/// when the 'trending' movies endpoint is called
 class MoviesTrending {
   MoviesTrending({
     this.page,

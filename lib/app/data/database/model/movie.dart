@@ -2,6 +2,8 @@ import 'package:hive_flutter/adapters.dart';
 
 part 'movie.g.dart';
 
+/// This is the model class that represents a movie item to be stored in the
+/// Hive database.
 @HiveType(typeId: 1)
 class Movie extends HiveObject {
   @HiveField(0)

@@ -1,5 +1,7 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
+/// This is the model class that represents the Json response from the API
+/// when the 'upcoming' movies endpoint is called
 class MoviesUpcoming {
   MoviesUpcoming({
     this.dates,
