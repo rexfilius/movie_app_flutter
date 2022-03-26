@@ -31,8 +31,9 @@ class _TrendingMoviesBuilderState extends State<TrendingMoviesBuilder> {
               itemBuilder: (context, index) {
                 return MovieCard(
                   movie: snapshot.data!.results![index],
-                  cardHeight: 210,
-                  cardWidth: 0.5 * screenWidth,
+                  cardHeight: 0.8 * screenWidth,
+                  cardWidth: 0.6 * screenWidth,
+                  clickable: true,
                 );
               },
             );

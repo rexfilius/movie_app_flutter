@@ -48,10 +48,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
               ),
             ),
             SizedBox(height: 8.0),
-            SizedBox(
-              height: 220,
-              child: TrendingMoviesBuilder(),
-            ),
+            SizedBox(height: 230, child: TrendingMoviesBuilder()),
           ],
         ),
       ),
