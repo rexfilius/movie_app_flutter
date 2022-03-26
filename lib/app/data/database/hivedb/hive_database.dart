@@ -7,21 +7,19 @@ const String movieDatabaseName = 'movie_database';
 class HiveDatabase {
   Box<Movie> getMovieBox() => Hive.box(movieDatabaseName);
 
-  void saveMovie(Movie movie) {
+  void addToFavorites(Movie movie) {
     final box = getMovieBox();
-    //final movieList = box.values.toSet().cast<Movie>();
-    //movieList.add(movie);
-    box.add(movie);
+    box.put(movie.id, movie);
+  }
+
+  void removeFromFavorites(Movie movie) {
+    final box = getMovieBox();
+    box.delete(movie.id);
   }
 
   List<Movie> getMovies() {
     final box = getMovieBox();
     final movieList = box.values.toList().cast<Movie>();
     return movieList;
-  }
-
-  void deleteMovie(int movieIndex) {
-    final box = getMovieBox();
-    box.deleteAt(movieIndex);
   }
 }

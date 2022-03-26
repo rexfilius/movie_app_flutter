@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
 /// This function converts the Json response model class - Result - to the
@@ -28,8 +25,8 @@ Future<Movie> convertJsonResultToMovie(Result result) async {
   );
 }
 
-/// This function returns the file path of where the movie image will be saved
-/// on the app directory
+/// This function returns the file path of where the movie poster image
+/// will be saved on the app directory
 Future<String> getImageFilePath(Result result) async {
   final directory = await getApplicationDocumentsDirectory();
   final filePath = directory.path; //directory.path + 'images';
@@ -38,7 +35,11 @@ Future<String> getImageFilePath(Result result) async {
   return filePathAndName;
 }
 
-/// This function downloads the movie image and saves it to the app's directory
+/// This function downloads the movie poster image and saves it to
+/// the app's directory. You do not need to ask for permission since you are
+/// just working inside the app's directory and not the phone's storage.
+///
+/// It returns the file path of where the image is.
 Future<String> saveImageToAppDirectory(Result result) async {
   HttpClient httpClient = HttpClient();
   String imageFilePath;
@@ -61,20 +62,4 @@ Future<String> saveImageToAppDirectory(Result result) async {
     imageFilePath = 'cannot fetch url' + exception.toString();
   }
   return imageFilePath;
-}
-
-Future<bool> isPermissionGranted() async {
-  var status = await Permission.storage.request();
-  switch (status) {
-    case PermissionStatus.denied:
-      return false;
-    case PermissionStatus.granted:
-      return true;
-    case PermissionStatus.restricted:
-      return false;
-    case PermissionStatus.limited:
-      return false;
-    case PermissionStatus.permanentlyDenied:
-      return false;
-  }
 }

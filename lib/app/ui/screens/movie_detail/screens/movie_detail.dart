@@ -17,9 +17,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     final resultArgs = ModalRoute.of(context)!.settings.arguments as Result;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    //final movie = convertJsonResultToMovie(args);
-    //final movieList = HiveDatabase().getMovies();
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.black,
@@ -46,10 +43,14 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   if (snapshot.hasData) {
                     return IconButton(
                       onPressed: () {
-                        HiveDatabase().saveMovie(snapshot.data!);
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('${resultArgs.title} added to favorites'),
-                        ));
+                        HiveDatabase().addToFavorites(snapshot.data!);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              '${resultArgs.title} added to favorites',
+                            ),
+                          ),
+                        );
                       },
                       icon: const Icon(
                         Icons.save,
@@ -109,22 +110,3 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     );
   }
 }
-
-// IconButton(
-// onPressed: () {
-// if (movieList.contains(movie)) {
-// ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-// content: Text('${args.title} already added to favorites'),
-// ));
-// } else if (!movieList.contains(movie)) {
-// HiveDatabase().saveMovie(movie);
-// ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-// content: Text('${args.title} added to favorites'),
-// ));
-// }
-// },
-// icon: const Icon(
-// Icons.save,
-// color: AppColors.white,
-// ),
-// ),

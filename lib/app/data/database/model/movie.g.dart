@@ -29,13 +29,14 @@ class MovieAdapter extends TypeAdapter<Movie> {
       video: fields[9] as bool?,
       voteAverage: fields[10] as double?,
       voteCount: fields[11] as int?,
+      posterPath: fields[12] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Movie obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.adult)
       ..writeByte(1)
@@ -59,7 +60,9 @@ class MovieAdapter extends TypeAdapter<Movie> {
       ..writeByte(10)
       ..write(obj.voteAverage)
       ..writeByte(11)
-      ..write(obj.voteCount);
+      ..write(obj.voteCount)
+      ..writeByte(12)
+      ..write(obj.posterPath);
   }
 
   @override
