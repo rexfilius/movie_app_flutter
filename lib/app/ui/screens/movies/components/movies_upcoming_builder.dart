@@ -10,11 +10,19 @@ class UpcomingMoviesBuilder extends StatefulWidget {
 
 class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
   late Future<MoviesUpcoming> _moviesUpcoming;
+  late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
+    _pageController = PageController();
     _moviesUpcoming = getUpcomingMovies();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
   }
 
   @override
@@ -26,14 +34,21 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
-            return ListView.builder(
+            return PageView.builder(
+              controller: _pageController,
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data?.results?.length,
               itemBuilder: (context, index) {
-                return UpcomingMovieCard(
-                  movie: snapshot.data!.results![index],
-                  cardHeight: 210,
-                  cardWidth: 0.8 * screenWidth,
+                return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: snapshot.data?.results?.length,
+                  itemBuilder: (context, index) {
+                    return UpcomingMovieCard(
+                      movie: snapshot.data!.results![index],
+                      cardHeight: 210,
+                      cardWidth: 0.8 * screenWidth,
+                    );
+                  },
                 );
               },
             );

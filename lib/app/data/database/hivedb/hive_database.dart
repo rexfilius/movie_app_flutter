@@ -17,6 +17,15 @@ class HiveDatabase {
     box.delete(movie.id);
   }
 
+  bool isMovieInDatabase(Movie movie) {
+    final box = getMovieBox();
+    if (box.containsKey(movie.id)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   List<Movie> getMovies() {
     final box = getMovieBox();
     final movieList = box.values.toList().cast<Movie>();

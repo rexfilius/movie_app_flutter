@@ -43,14 +43,20 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   if (snapshot.hasData) {
                     return IconButton(
                       onPressed: () {
-                        HiveDatabase().addToFavorites(snapshot.data!);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              '${resultArgs.title} added to favorites',
+                        if (HiveDatabase().isMovieInDatabase(snapshot.data!)) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('${resultArgs.title} already added'),
+                          ));
+                        } else {
+                          HiveDatabase().addToFavorites(snapshot.data!);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                '${resultArgs.title} added to favorites',
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        }
                       },
                       icon: const Icon(
                         Icons.save,
