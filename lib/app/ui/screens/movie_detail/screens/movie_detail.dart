@@ -35,68 +35,41 @@ class MovieDetailScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          resultArgs.adult != null && resultArgs.adult == true
-                              ? const Text('18+',
-                                  style: AppStyles.movieTitleText2)
-                              : const Text('13+',
-                                  style: AppStyles.movieTitleText2),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.star,
-                                color: AppColors.goldYellow,
-                              ),
-                              Text(
-                                '${resultArgs.voteAverage}',
-                                style: AppStyles.movieTitleText2,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: FutureBuilder<Movie>(
-                      future: convertJsonResultToMovie(resultArgs),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return IconButton(
-                            onPressed: () {
-                              if (HiveDatabase()
-                                  .isMovieInDatabase(snapshot.data!)) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                  content:
-                                      Text('${resultArgs.title} already added'),
-                                ));
-                              } else {
-                                HiveDatabase().addToFavorites(snapshot.data!);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      '${resultArgs.title} added to favorites',
-                                    ),
-                                  ),
-                                );
-                              }
-                            },
-                            icon: const Icon(
-                              Icons.save,
-                              color: AppColors.white,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            resultArgs.adult != null && resultArgs.adult == true
+                                ? const Text('18+',
+                                    style: AppStyles.movieTitleText2)
+                                : const Text('13+',
+                                    style: AppStyles.movieTitleText2),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.star,
+                                  color: AppColors.goldYellow,
+                                ),
+                                Text(
+                                  '${resultArgs.voteAverage}',
+                                  style: AppStyles.movieTitleText2,
+                                )
+                              ],
                             ),
-                          );
-                        }
-                        return const Icon(Icons.http);
-                      },
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SaveMovie(result: resultArgs),
+                            DeleteMovie(result: resultArgs),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   Padding(

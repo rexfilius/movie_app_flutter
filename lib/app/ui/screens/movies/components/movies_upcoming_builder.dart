@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 

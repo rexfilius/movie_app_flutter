@@ -40,3 +40,5 @@ export 'app/ui/screens/movie_favorite/components/favorite_movie_card.dart';
 
 /// Movie Detail Screen
 export 'app/ui/screens/movie_detail/screens/movie_detail.dart';
+export 'app/ui/screens/movie_detail/components/save_movie.dart';
+export 'app/ui/screens/movie_detail/components/delete_movie.dart';
