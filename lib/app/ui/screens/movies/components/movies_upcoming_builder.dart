@@ -55,10 +55,22 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
               },
             );
           } else if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
+            return const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Oops! An error occurred',
+                style: AppStyles.movieTitleText,
+              ),
+            );
           }
         }
-        return const Text('Loading movie list...');
+        return const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'Loading movie list...',
+            style: AppStyles.movieTitleText,
+          ),
+        );
       },
     );
   }
