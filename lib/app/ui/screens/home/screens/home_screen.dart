@@ -21,6 +21,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.search,
+              color: AppColors.white,
+            ),
+            onPressed: () async {
+              showSearch(
+                context: context,
+                delegate: MovieSearchDelegate(),
+              );
+            },
+          ),
+        ],
         backgroundColor: AppColors.black,
         bottom: TabBar(
           controller: _tabController,

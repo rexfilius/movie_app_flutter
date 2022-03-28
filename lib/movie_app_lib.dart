@@ -17,6 +17,7 @@ export 'app/utils/util_functions.dart';
 export 'app/data/network/models/movie_result.dart';
 export 'app/data/network/models/movies_upcoming.dart';
 export 'app/data/network/models/movies_trending.dart';
+export 'app/data/network/models/movies_search.dart';
 export 'app/data/network/api/movie_api.dart';
 
 /// Data - Database
@@ -24,7 +25,8 @@ export 'app/data/database/model/movie.dart';
 export 'app/data/database/hivedb/hive_database.dart';
 
 /// Home Screen
-export 'app/ui/screens/home/home_screen.dart';
+export 'app/ui/screens/home/screens/home_screen.dart';
+export 'app/ui/screens/home/components/movie_search_delegate.dart';
 
 /// Movies Screen
 export 'app/ui/screens/movies/screens/movies_screen.dart';

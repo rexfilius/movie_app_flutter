@@ -31,3 +31,15 @@ Future<MoviesTrending> getTrendingMovies() async {
     throw Exception('${response.body} - Error: failed to get trending movies');
   }
 }
+
+Future<MoviesSearch> searchMovies({required String query}) async {
+  String url =
+      "${baseUrl}search/movie?api_key=$apiKey&query=$query&adult=false";
+  final response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+    return MoviesSearch.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('${response.body} - Error: could not search movies');
+  }
+}
