@@ -44,7 +44,7 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
             );
           }
         } else if (snapshot.hasError) {
-          return Text(snapshot.error.toString());
+          return const Text('Oops!! Error - Your search field may be empty');
         }
         return const Text('Loading Search...');
       },
