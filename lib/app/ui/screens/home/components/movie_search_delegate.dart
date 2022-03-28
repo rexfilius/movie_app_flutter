@@ -9,7 +9,7 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    return [];
+    return null;
   }
 
   @override
@@ -26,7 +26,13 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
         if (snapshot.hasData) {
           if (snapshot.data?.results == null &&
               snapshot.data!.results!.isEmpty) {
-            return const Text('Your search returned nothing');
+            return const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Your search returned nothing',
+                style: AppStyles.movieTitleText,
+              ),
+            );
           } else {
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -44,9 +50,21 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
             );
           }
         } else if (snapshot.hasError) {
-          return const Text('Oops!! Error - Your search field may be empty');
+          return const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'Oops!! Error - Your search field may be empty',
+              style: AppStyles.movieTitleText,
+            ),
+          );
         }
-        return const Text('Loading Search...');
+        return const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'Loading your Search result...',
+            style: AppStyles.movieTitleText,
+          ),
+        );
       },
     );
   }
