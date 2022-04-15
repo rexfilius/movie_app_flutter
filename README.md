@@ -6,9 +6,9 @@ A mobile app that displays "Trending" and "Upcoming" movies from an API.
 
 To run the app, you need an API key from [MovieDB](https://www.themoviedb.org/)
 
-The app was built with these SDKs:
-- Dart = 2.16.1
-- Flutter = 2.10.1
+The app was built with these versions of the Dart & Flutter SDKs:
+- Dart = 2.16.2
+- Flutter = 2.10.4
 
 ## How it works
 On app startup, the first screen contains an AppBar with two tabs - My Movies & My List.
