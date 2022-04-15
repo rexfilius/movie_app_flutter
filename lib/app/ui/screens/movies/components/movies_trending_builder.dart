@@ -14,7 +14,7 @@ class _TrendingMoviesBuilderState extends State<TrendingMoviesBuilder> {
   @override
   void initState() {
     super.initState();
-    _moviesTrending = getTrendingMovies();
+    _moviesTrending = MovieApi.getTrendingMovies();
   }
 
   @override

@@ -3,11 +3,6 @@ import 'package:movie_app_flutter/movie_app_lib.dart';
 
 class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
   @override
-  ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(canvasColor: AppColors.black);
-  }
-
-  @override
   List<Widget>? buildActions(BuildContext context) {
     return null;
   }
@@ -21,7 +16,7 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
   Widget buildResults(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return FutureBuilder<MoviesSearch>(
-      future: searchMovies(query: query),
+      future: MovieApi.searchMovies(query: query),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data?.results == null &&

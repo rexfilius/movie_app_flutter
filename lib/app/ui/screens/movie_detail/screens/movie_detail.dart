@@ -21,10 +21,11 @@ class MovieDetailScreen extends StatelessWidget {
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: CachedNetworkImageProvider(
-                      baseUrlImage + "${resultArgs.posterPath}",
-                    ),
-                    fit: BoxFit.cover),
+                  image: CachedNetworkImageProvider(
+                    baseUrlImage + "${resultArgs.posterPath}",
+                  ),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

@@ -18,32 +18,29 @@ class _MovieFavoritesScreenState extends State<MovieFavoritesScreen> {
   @override
   Widget build(BuildContext context) {
     final movieList = HiveDatabase().getMovies();
-    return Container(
-      color: AppColors.black,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 8.0, left: 16),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Likes',
-                style: AppStyles.movieListHeader,
-              ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(top: 8.0, left: 16),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Likes',
+              style: AppStyles.movieListHeader,
             ),
           ),
-          const SizedBox(height: 8.0),
-          Expanded(
-            child: ValueListenableBuilder<Box<Movie>>(
-              valueListenable: HiveDatabase().getMovieBox().listenable(),
-              builder: (context, box, widget) {
-                return MovieDatabaseList(movieDatabaseList: movieList);
-              },
-            ),
+        ),
+        const SizedBox(height: 8.0),
+        Expanded(
+          child: ValueListenableBuilder<Box<Movie>>(
+            valueListenable: HiveDatabase().getMovieBox().listenable(),
+            builder: (context, box, widget) {
+              return MovieDatabaseList(movieDatabaseList: movieList);
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

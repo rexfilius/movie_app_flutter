@@ -18,7 +18,7 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
   void initState() {
     super.initState();
     _pageController = PageController();
-    _moviesUpcoming = getUpcomingMovies();
+    _moviesUpcoming = MovieApi.getUpcomingMovies();
   }
 
   @override
