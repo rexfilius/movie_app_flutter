@@ -13,6 +13,9 @@ export 'app/ui/apptheme/app_styles.dart';
 /// Utility classes
 export 'app/utils/util_functions.dart';
 
+///
+export 'app/state_management/controllers/movies_api_controller.dart';
+
 /// Data - Network
 export 'app/data/network/models/movie_result.dart';
 export 'app/data/network/models/movies_upcoming.dart';
