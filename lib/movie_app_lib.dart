@@ -18,6 +18,7 @@ export 'app/utils/util_widgets.dart';
 /// Classes related to the State Management library - GetX
 export 'app/state_management/controllers/upcoming_movie_controller.dart';
 export 'app/state_management/controllers/trending_movie_controller.dart';
+export 'app/state_management/controllers/home_tab_controller.dart';
 
 /// Data - Network
 export 'app/data/network/models/movie_result.dart';

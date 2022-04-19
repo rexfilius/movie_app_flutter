@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:get/get.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-  }
+  final _homeTabController = Get.put(HomeTabController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ],
         backgroundColor: AppColors.black,
         bottom: TabBar(
-          controller: _tabController,
+          controller: _homeTabController.tabController,
           tabs: const <Widget>[
             Tab(
               child: Text(
@@ -55,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ),
       ),
       body: TabBarView(
-        controller: _tabController,
+        controller: _homeTabController.tabController,
         children: const <Widget>[
           MoviesScreen(),
           MovieFavoritesScreen(),
