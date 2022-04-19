@@ -1,5 +1,5 @@
-/// This is the barrel file I created to handle import statements needed all
-/// over the app. With this file, I only have to import this one file and it
+/// This is the barrel file created to handle import statements needed all
+/// over the app. With this file, you only have to import this one file and it
 /// helps to keep the 'import' sections of files simple.
 
 /// Routes
@@ -12,9 +12,12 @@ export 'app/ui/apptheme/app_styles.dart';
 
 /// Utility classes
 export 'app/utils/util_functions.dart';
+export 'app/utils/util_extensions.dart';
+export 'app/utils/util_widgets.dart';
 
-///
-export 'app/state_management/controllers/movies_api_controller.dart';
+/// Classes related to the State Management library - GetX
+export 'app/state_management/controllers/upcoming_movie_controller.dart';
+export 'app/state_management/controllers/trending_movie_controller.dart';
 
 /// Data - Network
 export 'app/data/network/models/movie_result.dart';
@@ -33,8 +36,8 @@ export 'app/ui/screens/home/components/movie_search_delegate.dart';
 
 /// Movies Screen
 export 'app/ui/screens/movies/screens/movies_screen.dart';
-export 'app/ui/screens/movies/components/movies_upcoming_builder.dart';
-export 'app/ui/screens/movies/components/movies_trending_builder.dart';
+export 'app/ui/screens/movies/components/upcoming_movies_list.dart';
+export 'app/ui/screens/movies/components/trending_movies_list.dart';
 export 'app/ui/screens/movies/components/upcoming_movie_card.dart';
 export 'app/ui/screens/movies/components/trending_movie_card.dart';
 

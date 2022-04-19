@@ -1,18 +1,8 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 
-class MoviesScreen extends StatefulWidget {
+class MoviesScreen extends StatelessWidget {
   const MoviesScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MoviesScreen> createState() => _MoviesScreenState();
-}
-
-class _MoviesScreenState extends State<MoviesScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +11,8 @@ class _MoviesScreenState extends State<MoviesScreen> {
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [
-            Padding(
+          children: [
+            const Padding(
               padding: EdgeInsets.only(top: 8.0, left: 16),
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -32,12 +22,12 @@ class _MoviesScreenState extends State<MoviesScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             SizedBox(
               height: 220,
-              child: UpcomingMoviesBuilder(),
+              child: UpcomingMoviesList(),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 8.0, left: 16),
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -47,10 +37,10 @@ class _MoviesScreenState extends State<MoviesScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             SizedBox(
               height: 230,
-              child: TrendingMoviesBuilder(),
+              child: TrendingMoviesList(),
             ),
           ],
         ),
