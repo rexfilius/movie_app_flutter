@@ -13,7 +13,7 @@ class DeleteMovie extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () async {
-        final movie = await convertJsonResultToMovie(result);
+        final movie = await result.convertToDatabaseModel();
         if (HiveDatabase().isMovieInDatabase(movie)) {
           HiveDatabase().removeFromFavorites(movie);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

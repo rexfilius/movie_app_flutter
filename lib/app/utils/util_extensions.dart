@@ -1,6 +1,8 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
 extension ResultExtension on Result {
+  /// This function converts the Json response model class[Result]
+  /// to the database model class[Movie]
   Future<Movie> convertToDatabaseModel() async {
     final filePath = await saveImageToAppDirectory(this);
     return Movie(
