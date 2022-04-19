@@ -3,29 +3,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
-/// This function converts the Json response model class - Result - to the
-/// database model class - Movie.
-Future<Movie> convertJsonResultToMovie(Result result) async {
-  final filePath = await saveImageToAppDirectory(result);
-
-  return Movie(
-    adult: result.adult,
-    genreIds: result.genreIds,
-    id: result.id,
-    originalLanguage: result.originalLanguage,
-    originalTitle: result.originalTitle,
-    overview: result.overview,
-    popularity: result.popularity,
-    releaseDate: result.releaseDate,
-    title: result.title,
-    video: result.video,
-    voteAverage: result.voteAverage,
-    voteCount: result.voteCount,
-    posterPath: filePath,
-  );
-}
-
-/// This function returns the file path of where the movie poster image
+/// This function returns the file path of where a [Movie] poster image
 /// will be saved on the app directory
 Future<String> getImageFilePath(Result result) async {
   final directory = await getApplicationDocumentsDirectory();
@@ -35,7 +13,7 @@ Future<String> getImageFilePath(Result result) async {
   return filePathAndName;
 }
 
-/// This function downloads the movie poster image and saves it to
+/// This function downloads a [Movie] poster image and saves it to
 /// the app's directory. You do not need to ask for permission since you are
 /// just working inside the app's directory and not the phone's storage.
 ///

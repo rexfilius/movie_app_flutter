@@ -13,7 +13,7 @@ class SaveMovie extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () async {
-        final movie = await convertJsonResultToMovie(result);
+        final movie = await result.convertToDatabaseModel();
         if (HiveDatabase().isMovieInDatabase(movie)) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text('${result.title} already added'),

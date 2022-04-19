@@ -1,4 +1,4 @@
-/// This is the model class the represents the movie item from
+/// This is the model class that represents the movie item from
 /// the API Json response
 class Result {
   Result({
