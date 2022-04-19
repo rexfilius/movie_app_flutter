@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 
-class UpcomingMoviesBuilder extends StatefulWidget {
-  const UpcomingMoviesBuilder({Key? key}) : super(key: key);
+class UpcomingMoviesList extends StatefulWidget {
+  const UpcomingMoviesList({Key? key}) : super(key: key);
 
   @override
-  State<UpcomingMoviesBuilder> createState() => _UpcomingMoviesBuilderState();
+  State<UpcomingMoviesList> createState() => _UpcomingMoviesListState();
 }
 
-class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
+class _UpcomingMoviesListState extends State<UpcomingMoviesList> {
   late Future<MoviesUpcoming> _moviesUpcoming;
   late PageController _pageController;
 
@@ -18,7 +18,7 @@ class _UpcomingMoviesBuilderState extends State<UpcomingMoviesBuilder> {
   void initState() {
     super.initState();
     _pageController = PageController();
-    _moviesUpcoming = getUpcomingMovies();
+    _moviesUpcoming = MovieApi.getUpcomingMovies();
   }
 
   @override

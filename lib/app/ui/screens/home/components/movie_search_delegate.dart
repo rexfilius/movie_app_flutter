@@ -21,7 +21,7 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
   Widget buildResults(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return FutureBuilder<MoviesSearch>(
-      future: searchMovies(query: query),
+      future: MovieApi.searchMovies(query: query),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data?.results == null &&

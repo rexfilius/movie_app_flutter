@@ -12,6 +12,8 @@ export 'app/ui/apptheme/app_styles.dart';
 
 /// Utility classes
 export 'app/utils/util_functions.dart';
+export 'app/utils/util_widgets.dart';
+export 'app/utils/util_extensions.dart';
 
 /// Data - Network
 export 'app/data/network/models/movie_result.dart';
@@ -30,8 +32,8 @@ export 'app/ui/screens/home/components/movie_search_delegate.dart';
 
 /// Movies Screen
 export 'app/ui/screens/movies/screens/movies_screen.dart';
-export 'app/ui/screens/movies/components/movies_upcoming_builder.dart';
-export 'app/ui/screens/movies/components/movies_trending_builder.dart';
+export 'app/ui/screens/movies/components/upcoming_movies_list.dart';
+export 'app/ui/screens/movies/components/trending_movies_list.dart';
 export 'app/ui/screens/movies/components/upcoming_movie_card.dart';
 export 'app/ui/screens/movies/components/trending_movie_card.dart';
 

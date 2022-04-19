@@ -1,20 +1,20 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 
-class TrendingMoviesBuilder extends StatefulWidget {
-  const TrendingMoviesBuilder({Key? key}) : super(key: key);
+class TrendingMoviesList extends StatefulWidget {
+  const TrendingMoviesList({Key? key}) : super(key: key);
 
   @override
-  State<TrendingMoviesBuilder> createState() => _TrendingMoviesBuilderState();
+  State<TrendingMoviesList> createState() => _TrendingMoviesListState();
 }
 
-class _TrendingMoviesBuilderState extends State<TrendingMoviesBuilder> {
+class _TrendingMoviesListState extends State<TrendingMoviesList> {
   late Future<MoviesTrending> _moviesTrending;
 
   @override
   void initState() {
     super.initState();
-    _moviesTrending = getTrendingMovies();
+    _moviesTrending = MovieApi.getTrendingMovies();
   }
 
   @override

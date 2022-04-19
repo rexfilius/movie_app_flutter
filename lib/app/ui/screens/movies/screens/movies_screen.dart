@@ -35,7 +35,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
             SizedBox(height: 8.0),
             SizedBox(
               height: 220,
-              child: UpcomingMoviesBuilder(),
+              child: UpcomingMoviesList(),
             ),
             Padding(
               padding: EdgeInsets.only(top: 8.0, left: 16),
@@ -50,7 +50,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
             SizedBox(height: 8.0),
             SizedBox(
               height: 230,
-              child: TrendingMoviesBuilder(),
+              child: TrendingMoviesList(),
             ),
           ],
         ),
