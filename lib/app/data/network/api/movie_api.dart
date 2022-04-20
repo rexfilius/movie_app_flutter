@@ -50,17 +50,42 @@ class MovieApi {
   /// This function uses the http package to return a list of movies
   /// from the api that match the query data it received. The 'query'
   /// data is expected to be a 'movie title'.
-  static Future<MoviesSearch> searchMovies({required String query}) async {
+  static Future<MoviesSearch> searchMovies({
+    required String searchQuery,
+  }) async {
     String url =
-        "${baseUrl}search/movie?api_key=$apiKey&query=$query&adult=false";
+        "${baseUrl}search/movie?api_key=$apiKey&query=$searchQuery&adult=false";
     try {
-      final response = await http.get(Uri.parse(url));
+      final response = await client.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
         return MoviesSearch.fromJson(jsonDecode(response.body));
       } else {
         throw '${response.body}: Error: could not search movies';
       }
+    } on SocketException {
+      throw 'You are not connected to the internet';
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  static Future<List<Result>> getMovieTitleSuggestions({
+    required String searchQuery,
+  }) async {
+    String url =
+        "${baseUrl}search/movie?api_key=$apiKey&query=$searchQuery&adult=false";
+
+    try {
+      final response = await client.get(Uri.parse(url));
+      final movieSearch = MoviesSearch.fromJson(jsonDecode(response.body));
+      final movieList = movieSearch.results!;
+
+      return movieList.where((movie) {
+        final movieTitle = movie.title!.toLowerCase();
+        final queryData = searchQuery.toLowerCase();
+        return movieTitle.contains(queryData);
+      }).toList();
     } on SocketException {
       throw 'You are not connected to the internet';
     } catch (e) {
