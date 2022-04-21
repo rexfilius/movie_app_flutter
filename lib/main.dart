@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
@@ -21,12 +22,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: appRoutesMap,
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
+      getPages: AppPages.list,
       home: HomeScreen(),
     );
   }

@@ -2,10 +2,6 @@
 /// over the app. With this file, you only have to import this one file and it
 /// helps to keep the 'import' sections of files simple.
 
-/// Routes
-export 'app/routes/app_routes.dart';
-export 'app/routes/app_routes_map.dart';
-
 /// App themes
 export 'app/ui/apptheme/app_colors.dart';
 export 'app/ui/apptheme/app_styles.dart';
@@ -20,6 +16,8 @@ export 'app/state_management/controllers/upcoming_movie_controller.dart';
 export 'app/state_management/controllers/trending_movie_controller.dart';
 export 'app/state_management/controllers/home_tab_controller.dart';
 export 'app/state_management/controllers/movie_search_controller.dart';
+export 'app/state_management/routes/app_routes.dart';
+export 'app/state_management/routes/app_pages.dart';
 
 /// Data - Network
 export 'app/data/network/models/movie_result.dart';

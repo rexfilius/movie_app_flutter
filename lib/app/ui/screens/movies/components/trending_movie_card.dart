@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:get/get.dart';
 
 class TrendingMovieCard extends StatelessWidget {
   const TrendingMovieCard({
@@ -24,11 +25,7 @@ class TrendingMovieCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           if (clickable) {
-            Navigator.pushNamed(
-              context,
-              AppRoutes.movieDetailScreen,
-              arguments: movie,
-            );
+            Get.toNamed(AppRoutes.movieDetailScreen, arguments: movie);
           }
         },
         child: Column(

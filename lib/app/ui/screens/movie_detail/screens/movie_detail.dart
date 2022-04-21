@@ -1,13 +1,14 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   const MovieDetailScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final resultArgs = ModalRoute.of(context)!.settings.arguments as Result;
+    final resultArgs = Get.arguments as Result;
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(

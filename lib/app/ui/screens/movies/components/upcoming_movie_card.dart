@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:get/get.dart';
 
 class UpcomingMovieCard extends StatelessWidget {
   const UpcomingMovieCard({
@@ -18,11 +19,7 @@ class UpcomingMovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          AppRoutes.movieDetailScreen,
-          arguments: movie,
-        );
+        Get.toNamed(AppRoutes.movieDetailScreen, arguments: movie);
       },
       child: Container(
         padding: const EdgeInsets.all(8.0),
