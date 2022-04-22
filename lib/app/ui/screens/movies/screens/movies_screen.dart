@@ -21,9 +21,9 @@ class _MoviesScreenState extends State<MoviesScreen> {
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [
+          children: [
             Padding(
-              padding: EdgeInsets.only(top: 8.0, left: 16),
+              padding: const EdgeInsets.only(top: 8.0, left: 16),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -32,13 +32,13 @@ class _MoviesScreenState extends State<MoviesScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 8.0),
-            SizedBox(
+            const SizedBox(height: 8.0),
+            const SizedBox(
               height: 220,
               child: UpcomingMoviesList(),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 8.0, left: 16),
+              padding: const EdgeInsets.only(top: 8.0, left: 16),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -47,8 +47,8 @@ class _MoviesScreenState extends State<MoviesScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 8.0),
-            SizedBox(
+            const SizedBox(height: 8.0),
+            const SizedBox(
               height: 230,
               child: TrendingMoviesList(),
             ),

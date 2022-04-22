@@ -38,8 +38,8 @@ class _TrendingMoviesListState extends State<TrendingMoviesList> {
               },
             );
           } else if (snapshot.hasError) {
-            return const Padding(
-              padding: EdgeInsets.all(16.0),
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Text(
                 'Oops! An error occurred',
                 style: AppStyles.movieTitleText,
@@ -47,8 +47,8 @@ class _TrendingMoviesListState extends State<TrendingMoviesList> {
             );
           }
         }
-        return const Padding(
-          padding: EdgeInsets.all(16.0),
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Text(
             'Loading movie list...',
             style: AppStyles.movieTitleText,

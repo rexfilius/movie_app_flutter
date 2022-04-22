@@ -49,8 +49,8 @@ class _UpcomingMoviesListState extends State<UpcomingMoviesList> {
               },
             );
           } else if (snapshot.hasError) {
-            return const Padding(
-              padding: EdgeInsets.all(16.0),
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Text(
                 'Oops! An error occurred',
                 style: AppStyles.movieTitleText,
@@ -58,8 +58,8 @@ class _UpcomingMoviesListState extends State<UpcomingMoviesList> {
             );
           }
         }
-        return const Padding(
-          padding: EdgeInsets.all(16.0),
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Text(
             'Loading movie list...',
             style: AppStyles.movieTitleText,

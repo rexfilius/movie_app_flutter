@@ -26,8 +26,8 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
         if (snapshot.hasData) {
           if (snapshot.data?.results == null &&
               snapshot.data!.results!.isEmpty) {
-            return const Padding(
-              padding: EdgeInsets.all(16.0),
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Text(
                 'Your search returned nothing',
                 style: AppStyles.movieTitleText,
@@ -50,16 +50,16 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
             );
           }
         } else if (snapshot.hasError) {
-          return const Padding(
-            padding: EdgeInsets.all(16.0),
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               'Oops!! Error - Your search field may be empty',
               style: AppStyles.movieTitleText,
             ),
           );
         }
-        return const Padding(
-          padding: EdgeInsets.all(16.0),
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Text(
             'Loading your Search result...',
             style: AppStyles.movieTitleText,

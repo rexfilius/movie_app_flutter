@@ -23,8 +23,8 @@ class _MovieFavoritesScreenState extends State<MovieFavoritesScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 8.0, left: 16),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0, left: 16),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(

@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         backgroundColor: AppColors.black,
         bottom: TabBar(
           controller: _tabController,
-          tabs: const <Widget>[
+          tabs: <Widget>[
             Tab(
               child: Text(
                 'Movies',

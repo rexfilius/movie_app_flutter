@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppStyles {
-  static const TextStyle movieListHeader = TextStyle(
+  static TextStyle movieListHeader = GoogleFonts.raleway(
     fontWeight: FontWeight.w700,
     fontSize: 20,
     color: AppColors.white,
   );
 
-  static const TextStyle movieTitleText = TextStyle(
+  static TextStyle movieTitleText = GoogleFonts.raleway(
     fontWeight: FontWeight.bold,
     color: AppColors.white,
   );
@@ -18,7 +19,7 @@ class AppStyles {
     fontSize: 16,
   );
 
-  static const TextStyle upcomingMovieTitleText = TextStyle(
+  static TextStyle upcomingMovieTitleText = GoogleFonts.openSans(
     color: AppColors.white,
     fontSize: 24,
     fontWeight: FontWeight.bold,
