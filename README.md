@@ -10,6 +10,10 @@ The app was built with these versions of the Dart & Flutter SDKs:
 - Dart = 2.16.2
 - Flutter = 2.10.4
 
+There are 2 branches on this repo
+- **master** = Flutter project wih no state management
+- **state-getx** = Flutter project with GetX state management
+
 ## How it works
 On app startup, the first screen contains an AppBar with two tabs - My Movies & My List.
 A search icon is also present on the AppBar, where the user can click and search for movie titles.
@@ -28,3 +32,5 @@ user can add a movie to the 'favorite' list or remove it from the list.
 - [cached_network_image](https://pub.dev/packages/cached_network_image) = a Flutter library to show images from the internet and keep them in the cache directory.
 - [path_provider](https://pub.dev/packages/path_provider) = a Flutter plugin for finding commonly used locations on the filesystem.
 - [flutter_svg](https://pub.dev/packages/flutter_svg) = an SVG rendering and widget library for Flutter.
+- [google_fonts](https://pub.dev/packages/google_fonts) = A package to include fonts from fonts.google.com in your Flutter app.
+- [getx](https://pub.dev/packages/get) = a Flutter library for state, route and dependency management.
