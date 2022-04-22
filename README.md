@@ -1,6 +1,6 @@
 # movie_app_flutter
 
-A mobile app that displays "Trending" and "Upcoming" movies from an API.
+A mobile app that shows "Trending" and "Upcoming" movies from an API.
 
 ## Getting Started
 
