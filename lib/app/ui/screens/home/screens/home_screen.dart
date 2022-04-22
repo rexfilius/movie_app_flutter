@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: AppColors.black,
         bottom: TabBar(
           controller: _homeTabController.tabController,
-          tabs: const <Widget>[
+          tabs: <Widget>[
             Tab(
               child: Text(
                 'Movies',
