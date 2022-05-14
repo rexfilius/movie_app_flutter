@@ -3,18 +3,33 @@ import 'package:movie_app_flutter/movie_app_lib.dart';
 
 class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
   @override
-  ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(canvasColor: AppColors.black);
-  }
-
-  @override
   List<Widget>? buildActions(BuildContext context) {
-    return null;
+    return [
+      IconButton(
+        onPressed: () {
+          cleanQueryTextAndDismissSearch(context);
+        },
+        icon: const Icon(Icons.clear_sharp),
+      )
+    ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
-    return const Center();
+    return IconButton(
+      onPressed: () {
+        cleanQueryTextAndDismissSearch(context);
+      },
+      icon: const Icon(Icons.arrow_back_sharp),
+    );
+  }
+
+  void cleanQueryTextAndDismissSearch(BuildContext context) {
+    if (query.isNotEmpty) {
+      query = '';
+    } else {
+      close(context, MoviesSearch());
+    }
   }
 
   @override
@@ -23,47 +38,27 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
     return FutureBuilder<MoviesSearch>(
       future: MovieApi.searchMovies(query: query),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          if (snapshot.data?.results == null &&
-              snapshot.data!.results!.isEmpty) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Your search returned nothing',
-                style: AppStyles.movieTitleText,
-              ),
-            );
-          } else {
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ),
-              itemCount: snapshot.data?.results?.length,
-              itemBuilder: (context, index) {
-                return TrendingMovieCard(
-                  movie: snapshot.data!.results![index],
-                  cardWidth: 0.5 * screenWidth,
-                  cardHeight: 210,
-                  clickable: true,
-                );
-              },
-            );
-          }
-        } else if (snapshot.hasError) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Oops!! Error - Your search field may be empty',
-              style: AppStyles.movieTitleText,
-            ),
+        if (snapshot.hasError) {
+          return const ErrorListState(
+            text: 'Your search field may be empty',
           );
         }
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            'Loading your Search result...',
-            style: AppStyles.movieTitleText,
+        if (snapshot.data?.results == null && snapshot.data!.results!.isEmpty) {
+          return const ErrorListState(text: 'Your search returned nothing');
+        }
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
           ),
+          itemCount: snapshot.data?.results?.length,
+          itemBuilder: (context, index) {
+            return TrendingMovieCard(
+              movie: snapshot.data!.results![index],
+              cardWidth: 0.5 * screenWidth,
+              cardHeight: 210,
+              clickable: true,
+            );
+          },
         );
       },
     );
@@ -71,6 +66,30 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return const Center();
+    return FutureBuilder<MoviesSearch>(
+      future: MovieApi.searchMovies(query: query),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const ErrorListState(
+            text: 'Your search field may be empty',
+          );
+        }
+        if (snapshot.data?.results == null && snapshot.data!.results!.isEmpty) {
+          return const ErrorListState(text: 'Your search returned nothing');
+        }
+        return ListView.builder(
+          itemCount: snapshot.data?.results?.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(snapshot.data!.results![index].title ?? 'None'),
+              onTap: () {
+                query = snapshot.data!.results![index].title ?? 'None';
+                showResults(context);
+              },
+            );
+          },
+        );
+      },
+    );
   }
 }

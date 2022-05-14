@@ -14,6 +14,8 @@ void main() async {
     statusBarColor: AppColors.black,
     systemNavigationBarColor: AppColors.black,
   ));
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: appRoutesMap,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
       ),
       home: const HomeScreen(),
     );
