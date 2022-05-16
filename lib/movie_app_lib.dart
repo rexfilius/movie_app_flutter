@@ -33,7 +33,6 @@ export 'app/data/database/hivedb/hive_database.dart';
 /// Home Screen
 export 'app/ui/screens/home/screens/home_screen.dart';
 export 'app/ui/screens/home/components/movie_search_delegate.dart';
-export 'app/ui/screens/home/components/movie_search_delegate2.dart';
 
 /// Movies Screen
 export 'app/ui/screens/movies/screens/movies_screen.dart';

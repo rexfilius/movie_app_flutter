@@ -4,18 +4,13 @@ import 'package:movie_app_flutter/movie_app_lib.dart';
 class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
   @override
   List<Widget>? buildActions(BuildContext context) {
-    return <Widget>[
+    return [
       IconButton(
         color: Colors.white,
         onPressed: () {
-          if (query.isEmpty) {
-            Navigator.pop(context);
-          } else {
-            query = '';
-            //showSuggestions(context);
-          }
+          cleanQueryTextAndDismissSearch(context);
         },
-        icon: const Icon(Icons.close_sharp),
+        icon: const Icon(Icons.clear_sharp),
       )
     ];
   }
@@ -25,10 +20,18 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
     return IconButton(
       color: Colors.white,
       onPressed: () {
-        Navigator.pop(context);
+        cleanQueryTextAndDismissSearch(context);
       },
       icon: const Icon(Icons.arrow_back_sharp),
     );
+  }
+
+  void cleanQueryTextAndDismissSearch(BuildContext context) {
+    if (query.isNotEmpty) {
+      query = '';
+    } else {
+      close(context, MoviesSearch());
+    }
   }
 
   @override
@@ -37,70 +40,58 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
     return FutureBuilder<MoviesSearch>(
       future: MovieApi.searchMovies(searchQuery: query),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          if (snapshot.data?.results == null &&
-              snapshot.data!.results!.isEmpty) {
-            return const ErrorListState(text: 'You search returned nothing');
-          } else {
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ),
-              itemCount: snapshot.data?.results?.length,
-              itemBuilder: (context, index) {
-                return TrendingMovieCard(
-                  movie: snapshot.data!.results![index],
-                  cardWidth: 0.5 * screenWidth,
-                  cardHeight: 210,
-                  clickable: true,
-                );
-              },
-            );
-          }
-        } else if (snapshot.hasError) {
+        if (snapshot.hasError) {
           return const ErrorListState(
-              text: 'Oops!! Error - Your search field may be empty');
+            text: 'Your search field may be empty',
+          );
         }
-        return const LoadingListState(text: 'Loading your search results...');
+        if (snapshot.data?.results == null && snapshot.data!.results!.isEmpty) {
+          return const ErrorListState(text: 'Your search returned nothing');
+        }
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
+          itemCount: snapshot.data?.results?.length,
+          itemBuilder: (context, index) {
+            return TrendingMovieCard(
+              movie: snapshot.data!.results![index],
+              cardWidth: 0.5 * screenWidth,
+              cardHeight: 210,
+              clickable: true,
+            );
+          },
+        );
       },
     );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return const Center();
-  }
-}
-
-/**
- FutureBuilder<List<Result>>(
-      future: MovieApi.getMovieTitleSuggestions(searchQuery: query),
+    return FutureBuilder<MoviesSearch>(
+      future: MovieApi.searchMovies(searchQuery: query),
       builder: (context, snapshot) {
-        if (query.isEmpty) {
-          return const ErrorListState(text: 'Query is empty');
+        if (snapshot.hasError) {
+          return const ErrorListState(
+            text: 'Your search field may be empty',
+          );
         }
-        if (snapshot.hasData) {
-          if (snapshot.data == null && snapshot.data!.isEmpty) {
-            return const ErrorListState(text: 'No suggestions');
-          } else {
-            return ListView.builder(
-              itemCount: snapshot.data?.length,
-              itemBuilder: (context, index) {
-                final suggestions = snapshot.data![index].title!;
-                return ListTile(
-                  onTap: () {
-                    query = suggestions;
-                    showResults(context);
-                  },
-                  title: Text(snapshot.data![index].title!),
-                );
+        if (snapshot.data?.results == null && snapshot.data!.results!.isEmpty) {
+          return const ErrorListState(text: 'Your search returned nothing');
+        }
+        return ListView.builder(
+          itemCount: snapshot.data?.results?.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(snapshot.data!.results![index].title ?? 'None'),
+              onTap: () {
+                query = snapshot.data!.results![index].title ?? 'None';
+                showResults(context);
               },
             );
-          }
-        } else if (snapshot.hasError) {
-          return const ErrorListState(text: 'No result, an error occured');
-        }
-        return const LoadingListState(text: 'Loading your search results...');
+          },
+        );
       },
     );
- */
+  }
+}

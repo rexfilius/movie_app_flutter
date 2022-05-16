@@ -15,6 +15,10 @@ void main() async {
     statusBarColor: AppColors.black,
     systemNavigationBarColor: AppColors.black,
   ));
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
 }
 
 class MyApp extends StatelessWidget {

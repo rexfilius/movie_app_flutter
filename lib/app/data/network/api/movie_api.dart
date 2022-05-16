@@ -70,7 +70,7 @@ class MovieApi {
     }
   }
 
-  static Future<List<Result>> getMovieTitleSuggestions({
+  /*static Future<List<Result>> getMovieTitleSuggestions({
     required String searchQuery,
   }) async {
     String url =
@@ -91,5 +91,5 @@ class MovieApi {
     } catch (e) {
       throw e.toString();
     }
-  }
+  }*/
 }
