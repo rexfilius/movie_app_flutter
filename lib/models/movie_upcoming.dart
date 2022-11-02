@@ -1,25 +1,29 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
 /// This is the model class that represents the Json response from the API
-/// when the 'trending' movies endpoint is called
-class MoviesTrending {
-  MoviesTrending({
+/// when the 'upcoming' movies endpoint is called
+class MovieUpcoming {
+  MovieUpcoming({
+    this.dates,
     this.page,
     this.results,
     this.totalPages,
     this.totalResults,
   });
 
+  Dates? dates;
   int? page;
   List<Result>? results;
   int? totalPages;
   int? totalResults;
 
-  factory MoviesTrending.fromJson(Map<String, dynamic> json) {
-    return MoviesTrending(
+  factory MovieUpcoming.fromJson(Map<String, dynamic> json) {
+    return MovieUpcoming(
+      dates: Dates.fromJson(json["dates"]),
       page: json["page"],
-      results:
-          List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+      results: List<Result>.from(
+        json["results"].map((x) => Result.fromJson(x)),
+      ),
       totalPages: json["total_pages"],
       totalResults: json["total_results"],
     );
@@ -27,14 +31,11 @@ class MoviesTrending {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-
+    map["dates"] = dates?.toJson();
     map["page"] = page;
-    if (results != null) {
-      map["results"] = results?.map((e) => e.toJson()).toList();
-    }
+    map["results"] = results?.map((e) => e.toJson()).toList() ?? [];
     map["total_pages"] = totalPages;
     map["total_results"] = totalResults;
-
     return map;
   }
 }

@@ -16,11 +16,11 @@ export 'utils/util_widgets.dart';
 export 'utils/util_extensions.dart';
 
 /// Data - Model classes for API and Database
-export 'models/movies_search.dart';
+export 'models/movie_search.dart';
 export 'models/movie.dart';
 export 'models/movie_result.dart';
-export 'models/movies_upcoming.dart';
-export 'models/movies_trending.dart';
+export 'models/movie_upcoming.dart';
+export 'models/movie_trending.dart';
 
 /// Data - Network
 export 'data/remote_source/movie_api.dart';

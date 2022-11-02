@@ -1,7 +1,7 @@
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
-class MoviesSearch {
-  MoviesSearch({
+class MovieSearch {
+  MovieSearch({
     this.page,
     this.results,
     this.totalPages,
@@ -13,8 +13,8 @@ class MoviesSearch {
   int? totalPages;
   int? totalResults;
 
-  factory MoviesSearch.fromJson(Map<String, dynamic> json) {
-    return MoviesSearch(
+  factory MovieSearch.fromJson(Map<String, dynamic> json) {
+    return MovieSearch(
       page: json["page"],
       results:
           List<Result>.from(json["results"].map((x) => Result.fromJson(x))),

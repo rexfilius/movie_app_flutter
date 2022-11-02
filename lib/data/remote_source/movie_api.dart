@@ -22,13 +22,13 @@ class MovieApi {
 
   /// This function uses the http package to get the list of upcoming movies
   /// from the API
-  static Future<MoviesUpcoming> getUpcomingMovies() async {
+  static Future<MovieUpcoming> getUpcomingMovies() async {
     const String url = "${baseUrl}movie/upcoming?api_key=$apiKey";
 
     try {
       final response = await client.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        return MoviesUpcoming.fromJson(jsonDecode(response.body));
+        return MovieUpcoming.fromJson(jsonDecode(response.body));
       } else {
         throw '${response.body}: Error: failed to get upcoming movies';
       }
@@ -41,13 +41,13 @@ class MovieApi {
 
   /// This function uses the http package to get the list of trending movies
   /// from the API.
-  static Future<MoviesTrending> getTrendingMovies() async {
+  static Future<MovieTrending> getTrendingMovies() async {
     const String url = "${baseUrl}trending/movie/day?api_key=$apiKey";
 
     try {
       final response = await client.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        return MoviesTrending.fromJson(jsonDecode(response.body));
+        return MovieTrending.fromJson(jsonDecode(response.body));
       } else {
         throw '${response.body}: Error: failed to get trending movies';
       }
@@ -61,14 +61,14 @@ class MovieApi {
   /// This function uses the http package to return a list of movies
   /// from the api that match the query data it received. The 'query'
   /// data is expected to be a 'movie title'.
-  static Future<MoviesSearch> searchMovies({required String query}) async {
+  static Future<MovieSearch> searchMovies({required String query}) async {
     String url =
         "${baseUrl}search/movie?api_key=$apiKey&query=$query&adult=false";
 
     try {
       final response = await client.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        return MoviesSearch.fromJson(jsonDecode(response.body));
+        return MovieSearch.fromJson(jsonDecode(response.body));
       } else {
         throw '${response.body}: Error: could not search movies';
       }

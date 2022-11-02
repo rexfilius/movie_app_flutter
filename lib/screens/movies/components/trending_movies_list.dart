@@ -9,7 +9,7 @@ class TrendingMoviesList extends StatefulWidget {
 }
 
 class _TrendingMoviesListState extends State<TrendingMoviesList> {
-  late Future<MoviesTrending> _moviesTrending;
+  late Future<MovieTrending> _moviesTrending;
 
   @override
   void initState() {
@@ -20,7 +20,7 @@ class _TrendingMoviesListState extends State<TrendingMoviesList> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return FutureBuilder<MoviesTrending>(
+    return FutureBuilder<MovieTrending>(
       future: _moviesTrending,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {

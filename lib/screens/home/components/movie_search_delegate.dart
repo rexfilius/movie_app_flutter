@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
-class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
+class MovieSearchDelegate extends SearchDelegate<MovieSearch> {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -28,14 +28,14 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
     if (query.isNotEmpty) {
       query = '';
     } else {
-      close(context, MoviesSearch());
+      close(context, MovieSearch());
     }
   }
 
   @override
   Widget buildResults(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return FutureBuilder<MoviesSearch>(
+    return FutureBuilder<MovieSearch>(
       future: MovieApi.searchMovies(query: query),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -66,7 +66,7 @@ class MovieSearchDelegate extends SearchDelegate<MoviesSearch> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return FutureBuilder<MoviesSearch>(
+    return FutureBuilder<MovieSearch>(
       future: MovieApi.searchMovies(query: query),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
