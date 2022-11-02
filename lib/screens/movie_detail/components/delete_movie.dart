@@ -16,17 +16,17 @@ class DeleteMovie extends StatelessWidget {
         final movie = await result.convertToDatabaseModel();
         if (HiveDatabase().isMovieInDatabase(movie)) {
           HiveDatabase().removeFromFavorites(movie);
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('${result.title} removed from favorites'),
-          ));
+          // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          //   content: Text('${result.title} removed from favorites'),
+          // ));
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                '${result.title} already removed from favorites',
-              ),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text(
+          //       '${result.title} already removed from favorites',
+          //     ),
+          //   ),
+          // );
         }
       },
       icon: const Icon(

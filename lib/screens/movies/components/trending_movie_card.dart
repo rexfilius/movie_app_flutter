@@ -42,7 +42,7 @@ class TrendingMovieCard extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: CachedNetworkImageProvider(
-                    baseUrlImage + "${movie.posterPath}",
+                    "$baseUrlImage${movie.posterPath}",
                   ),
                 ),
               ),

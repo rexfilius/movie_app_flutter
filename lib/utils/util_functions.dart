@@ -9,7 +9,7 @@ Future<String> getImageFilePath(Result result) async {
   final directory = await getApplicationDocumentsDirectory();
   final filePath = directory.path; //directory.path + 'images';
   await Directory(filePath).create(recursive: true);
-  final filePathAndName = filePath + '${result.posterPath}';
+  final filePathAndName = '$filePath${result.posterPath}';
   return filePathAndName;
 }
 
@@ -24,7 +24,7 @@ Future<String> saveImageToAppDirectory(Result result) async {
   String imageUrl;
 
   try {
-    imageUrl = baseUrlImage + '${result.posterPath}';
+    imageUrl = '$baseUrlImage${result.posterPath}';
     var request = await httpClient.getUrl(Uri.parse(imageUrl));
     var response = await request.close();
 
@@ -34,10 +34,10 @@ Future<String> saveImageToAppDirectory(Result result) async {
       File file = File(imageFilePath);
       await file.writeAsBytes(bytes);
     } else {
-      imageFilePath = 'Error code: ' + response.statusCode.toString();
+      imageFilePath = 'Error code: ${response.statusCode}';
     }
   } catch (exception) {
-    imageFilePath = 'cannot fetch url' + exception.toString();
+    imageFilePath = 'cannot fetch url $exception';
   }
   return imageFilePath;
 }

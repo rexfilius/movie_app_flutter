@@ -22,7 +22,7 @@ class MovieDetailScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                      baseUrlImage + "${resultArgs.posterPath}",
+                      "$baseUrlImage${resultArgs.posterPath}",
                     ),
                     fit: BoxFit.cover),
               ),

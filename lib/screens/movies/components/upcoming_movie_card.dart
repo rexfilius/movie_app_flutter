@@ -33,7 +33,7 @@ class UpcomingMovieCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           image: DecorationImage(
               image: CachedNetworkImageProvider(
-                baseUrlImage + "${movie.posterPath}",
+                "$baseUrlImage${movie.posterPath}",
               ),
               fit: BoxFit.cover),
         ),

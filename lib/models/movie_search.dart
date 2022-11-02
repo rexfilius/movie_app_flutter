@@ -16,8 +16,9 @@ class MovieSearch {
   factory MovieSearch.fromJson(Map<String, dynamic> json) {
     return MovieSearch(
       page: json["page"],
-      results:
-          List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+      results: List<Result>.from(
+        json["results"].map((x) => Result.fromJson(x)),
+      ),
       totalPages: json["total_pages"],
       totalResults: json["total_results"],
     );
@@ -25,14 +26,10 @@ class MovieSearch {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-
     map["page"] = page;
-    if (results != null) {
-      map["results"] = results?.map((e) => e.toJson()).toList();
-    }
+    map["results"] = results?.map((e) => e.toJson()).toList() ?? [];
     map["total_pages"] = totalPages;
     map["total_results"] = totalResults;
-
     return map;
   }
 }

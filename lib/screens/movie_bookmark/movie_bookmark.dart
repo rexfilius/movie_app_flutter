@@ -2,20 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 
-class MovieFavoritesScreen extends StatefulWidget {
-  const MovieFavoritesScreen({Key? key}) : super(key: key);
+class MovieBookmarkScreen extends StatefulWidget {
+  const MovieBookmarkScreen({Key? key}) : super(key: key);
 
   @override
-  State<MovieFavoritesScreen> createState() => _MovieFavoritesScreenState();
+  State<MovieBookmarkScreen> createState() => _MovieBookmarkScreenState();
 }
 
-class _MovieFavoritesScreenState extends State<MovieFavoritesScreen> {
+class _MovieBookmarkScreenState extends State<MovieBookmarkScreen> {
   @override
   void initState() {
     super.initState();
   }
 
   @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+
+  /*@override
   Widget build(BuildContext context) {
     final movieList = HiveDatabase().getMovies();
     return Container(
@@ -45,5 +50,5 @@ class _MovieFavoritesScreenState extends State<MovieFavoritesScreen> {
         ],
       ),
     );
-  }
+  }*/
 }

@@ -29,7 +29,7 @@ export 'data/remote_source/movie_api.dart';
 export 'data/local_source/hive_database.dart';
 
 /// Home Screen
-export 'screens/home/screens/home_screen.dart';
+export 'screens/home/home_screen.dart';
 export 'screens/home/components/movie_search_delegate.dart';
 
 /// Movies Screen
@@ -40,9 +40,9 @@ export 'screens/movies/components/upcoming_movie_card.dart';
 export 'screens/movies/components/trending_movie_card.dart';
 
 /// Movie Favorites Screen
-export 'screens/movie_favorite/movie_favorites.dart';
-export 'screens/movie_favorite/components/movie_database_list.dart';
-export 'screens/movie_favorite/components/favorite_movie_card.dart';
+export 'screens/movie_bookmark/movie_bookmark.dart';
+export 'screens/movie_bookmark/components/movie_database_list.dart';
+export 'screens/movie_bookmark/components/favorite_movie_card.dart';
 
 /// Movie Detail Screen
 export 'screens/movie_detail/movie_detail.dart';

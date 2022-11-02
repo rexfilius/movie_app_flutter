@@ -15,16 +15,16 @@ class SaveMovie extends StatelessWidget {
       onPressed: () async {
         final movie = await result.convertToDatabaseModel();
         if (HiveDatabase().isMovieInDatabase(movie)) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('${result.title} already added'),
-          ));
+          // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          //   content: Text('${result.title} already added'),
+          // ));
         } else {
           HiveDatabase().addToFavorites(movie);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('${result.title} added to favorites'),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text('${result.title} added to favorites'),
+          //   ),
+          // );
         }
       },
       icon: const Icon(
