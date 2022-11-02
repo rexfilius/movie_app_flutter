@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:movie_app_flutter/app/api_token/api_key.dart';
+import 'package:movie_app_flutter/private/api_token/api_key.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:http/http.dart' as http;
 

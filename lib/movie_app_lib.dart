@@ -3,46 +3,46 @@
 /// helps to keep the 'import' sections of files simple.
 
 /// Routes
-export 'app/routes/app_routes.dart';
-export 'app/routes/app_routes_map.dart';
+export 'private/routes/app_routes.dart';
+export 'private/routes/app_routes_map.dart';
 
 /// App themes
-export 'app/ui/apptheme/app_colors.dart';
-export 'app/ui/apptheme/app_styles.dart';
+export 'private/ui/apptheme/app_colors.dart';
+export 'private/ui/apptheme/app_styles.dart';
 
 /// Utility classes
-export 'app/utils/util_functions.dart';
-export 'app/utils/util_widgets.dart';
-export 'app/utils/util_extensions.dart';
+export 'private/utils/util_functions.dart';
+export 'private/utils/util_widgets.dart';
+export 'private/utils/util_extensions.dart';
 
 /// Data - Network
-export 'app/data/network/models/movie_result.dart';
-export 'app/data/network/models/movies_upcoming.dart';
-export 'app/data/network/models/movies_trending.dart';
-export 'app/data/network/models/movies_search.dart';
-export 'app/data/network/api/movie_api.dart';
+export 'private/data/network/models/movie_result.dart';
+export 'private/data/network/models/movies_upcoming.dart';
+export 'private/data/network/models/movies_trending.dart';
+export 'private/data/network/models/movies_search.dart';
+export 'private/data/network/api/movie_api.dart';
 
 /// Data - Database
-export 'app/data/database/model/movie.dart';
-export 'app/data/database/hivedb/hive_database.dart';
+export 'private/data/database/model/movie.dart';
+export 'private/data/database/hivedb/hive_database.dart';
 
 /// Home Screen
-export 'app/ui/screens/home/screens/home_screen.dart';
-export 'app/ui/screens/home/components/movie_search_delegate.dart';
+export 'private/ui/screens/home/screens/home_screen.dart';
+export 'private/ui/screens/home/components/movie_search_delegate.dart';
 
 /// Movies Screen
-export 'app/ui/screens/movies/screens/movies_screen.dart';
-export 'app/ui/screens/movies/components/upcoming_movies_list.dart';
-export 'app/ui/screens/movies/components/trending_movies_list.dart';
-export 'app/ui/screens/movies/components/upcoming_movie_card.dart';
-export 'app/ui/screens/movies/components/trending_movie_card.dart';
+export 'private/ui/screens/movies/screens/movies_screen.dart';
+export 'private/ui/screens/movies/components/upcoming_movies_list.dart';
+export 'private/ui/screens/movies/components/trending_movies_list.dart';
+export 'private/ui/screens/movies/components/upcoming_movie_card.dart';
+export 'private/ui/screens/movies/components/trending_movie_card.dart';
 
 /// Movie Favorites Screen
-export 'app/ui/screens/movie_favorite/screens/movie_favorites.dart';
-export 'app/ui/screens/movie_favorite/components/movie_database_list.dart';
-export 'app/ui/screens/movie_favorite/components/favorite_movie_card.dart';
+export 'private/ui/screens/movie_favorite/screens/movie_favorites.dart';
+export 'private/ui/screens/movie_favorite/components/movie_database_list.dart';
+export 'private/ui/screens/movie_favorite/components/favorite_movie_card.dart';
 
 /// Movie Detail Screen
-export 'app/ui/screens/movie_detail/screens/movie_detail.dart';
-export 'app/ui/screens/movie_detail/components/save_movie.dart';
-export 'app/ui/screens/movie_detail/components/delete_movie.dart';
+export 'private/ui/screens/movie_detail/screens/movie_detail.dart';
+export 'private/ui/screens/movie_detail/components/save_movie.dart';
+export 'private/ui/screens/movie_detail/components/delete_movie.dart';

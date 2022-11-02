@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-/lib/app/api_token
+/lib/private/api_token
 /lib/token
 
 # IntelliJ related
