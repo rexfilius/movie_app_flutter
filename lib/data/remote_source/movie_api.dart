@@ -3,12 +3,22 @@ import 'dart:io';
 import 'package:movie_app_flutter/private/api_token/api_key.dart';
 import 'package:movie_app_flutter/movie_app_lib.dart';
 import 'package:http/http.dart' as http;
+import 'package:async/async.dart';
 
 const String baseUrl = "https://api.themoviedb.org/3/";
 const String baseUrlImage = "https://image.tmdb.org/t/p/original";
 
 class MovieApi {
+  /// Making this class a singleton
+  MovieApi._internal();
+  static final MovieApi _instance = MovieApi._internal();
+  factory MovieApi() {
+    return _instance;
+  }
+
   static http.Client client = http.Client();
+
+  final memoizer = AsyncMemoizer();
 
   /// This function uses the http package to get the list of upcoming movies
   /// from the API

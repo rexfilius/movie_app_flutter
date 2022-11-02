@@ -9,7 +9,6 @@
 .history
 .svn/
 /lib/private/api_token
-/lib/token
 
 # IntelliJ related
 *.iml
