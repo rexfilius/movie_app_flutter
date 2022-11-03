@@ -15,6 +15,9 @@ export 'utils/util_functions.dart';
 export 'utils/util_widgets.dart';
 export 'utils/util_extensions.dart';
 
+export 'utils/widgets/vertical_movie_card.dart';
+export 'utils/widgets/more_options_card.dart';
+
 /// Data - Model classes for API and Database
 export 'models/movie_search.dart';
 export 'models/movie.dart';

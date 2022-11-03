@@ -16,6 +16,63 @@ class _MoviesScreenState extends State<MoviesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: const Padding(
+            padding: EdgeInsets.only(left: 16.0, top: 8.0),
+            child: Text(
+              'Now Showing',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        Flexible(
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return const VerticalMovieCard();
+            },
+          ),
+        ),
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: EdgeInsets.only(left: 16.0),
+            child: Text(
+              'More',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: const [
+              MoreOptionsCard(tag: 'Popular movies'),
+              MoreOptionsCard(tag: 'Top rated movies')
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: const [
+              MoreOptionsCard(tag: 'Upcoming movies'),
+              MoreOptionsCard(tag: 'Trending movies')
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
