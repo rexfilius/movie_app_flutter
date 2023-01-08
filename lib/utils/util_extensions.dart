@@ -1,11 +1,11 @@
-import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:movie_app_flutter/library.dart';
 
 extension ResultExtension on Result {
   /// This function converts the Json response model class[Result]
-  /// to the database model class[Movie]
-  Future<Movie> convertToDatabaseModel() async {
-    final filePath = await saveImageToAppDirectory(this);
-    return Movie(
+  /// to the database model class[EntityMovie]
+  Future<EntityMovie> convertToDatabaseModel() async {
+    final filePath = await saveMovieImageToAppDirectory(this);
+    return EntityMovie(
       adult: adult,
       genreIds: genreIds,
       id: id,
@@ -15,10 +15,29 @@ extension ResultExtension on Result {
       popularity: popularity,
       releaseDate: releaseDate,
       title: title,
-      video: video,
-      voteAverage: voteAverage,
+      voteAverage: voteAverage, // change type to num?
       voteCount: voteCount,
       posterPath: filePath,
+    );
+  }
+}
+
+extension TvShowResultExtension on TvShowResult {
+  Future<EntityTvShow> convertToDatabaseModel() async {
+    final filePath = await saveShowImageToAppDirectory(this);
+    return EntityTvShow(
+      firstAirDate: firstAirDate,
+      genreIds: genreIds,
+      id: id,
+      name: name,
+      originCountry: originCountry,
+      originalLanguage: originalLanguage,
+      originalName: originalName,
+      overview: overview,
+      popularity: popularity,
+      posterPath: filePath,
+      voteAverage: voteAverage,
+      voteCount: voteCount,
     );
   }
 }

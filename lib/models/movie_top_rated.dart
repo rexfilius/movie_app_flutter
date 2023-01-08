@@ -1,4 +1,4 @@
-import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:movie_app_flutter/library.dart';
 
 class MovieTopRated {
   int? page;

@@ -1,4 +1,4 @@
-import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:movie_app_flutter/library.dart';
 
 class MovieNowPlaying {
   Dates? dates;
@@ -35,5 +35,17 @@ class MovieNowPlaying {
     map["total_pages"] = totalPages;
     map["total_results"] = totalResults;
     return map;
+  }
+
+  @override
+  String toString() {
+    return {
+      "CLASS": "MovieNowPlaying",
+      "dates": dates,
+      "page": page,
+      "results": results,
+      "totalPages": totalPages,
+      "totalResults": totalResults,
+    }.toString();
   }
 }

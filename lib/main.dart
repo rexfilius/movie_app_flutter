@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movie_app_flutter/movie_app_lib.dart';
+import 'package:movie_app_flutter/library.dart';
 
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(MovieAdapter());
-  await Hive.openBox<Movie>(movieDatabaseName);
+  Hive.registerAdapter(EntityMovieAdapter());
+  Hive.registerAdapter(EntityTvShowAdapter());
+  await Hive.openBox<EntityMovie>(movieDatabaseName);
+  await Hive.openBox<EntityTvShow>(tvShowDatabaseName);
 
   runApp(const MyApp());
-
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: AppColors.black,
-    systemNavigationBarColor: AppColors.black,
-  ));
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
@@ -27,9 +24,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: appRoutesMap,
       theme: ThemeData(
+        appBarTheme: globalAppBarTheme,
+        scaffoldBackgroundColor: Colors.white,
         brightness: Brightness.light,
       ),
-      home: const HomeScreen(),
+      home: const ScreenHome(),
     );
   }
 }
+
+/// AppBarTheme used all through the app
+AppBarTheme globalAppBarTheme = AppBarTheme(
+  elevation: 0,
+  foregroundColor: Colors.black,
+  backgroundColor: Colors.white,
+  centerTitle: true,
+  systemOverlayStyle: SystemUiOverlayStyle(
+    statusBarColor: Colors.grey.shade400,
+  ),
+);

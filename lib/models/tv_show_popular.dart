@@ -1,23 +1,23 @@
 import 'package:movie_app_flutter/library.dart';
 
-class MoviePopular {
+class TvShowPopular {
   int? page;
-  List<Result>? results;
+  List<TvResult>? results;
   int? totalPages;
   int? totalResults;
 
-  MoviePopular({
+  TvShowPopular({
     this.page,
     this.results,
     this.totalPages,
     this.totalResults,
   });
 
-  factory MoviePopular.fromJson(Map<String, dynamic> json) {
-    return MoviePopular(
-      page: json['page'],
-      results: List<Result>.from(
-        json["results"].map((x) => Result.fromJson(x)),
+  factory TvShowPopular.fromJson(Map<String, dynamic> json) {
+    return TvShowPopular(
+      page: json["page"],
+      results: List<TvResult>.from(
+        json["results"].map((e) => TvResult.fromJson(e)),
       ),
       totalPages: json["total_pages"],
       totalResults: json["total_results"],
@@ -31,5 +31,16 @@ class MoviePopular {
     map["total_pages"] = totalPages;
     map["total_results"] = totalResults;
     return map;
+  }
+
+  @override
+  String toString() {
+    return {
+      "CLASS": "TvShowPopular",
+      "page": page,
+      "results": results,
+      "totalPages": totalPages,
+      "totalResults": totalResults,
+    }.toString();
   }
 }

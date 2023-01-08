@@ -1,6 +1,21 @@
 /// This is the model class that represents the movie item from
 /// the API Json response
 class Result {
+  bool? adult;
+  String? backdropPath;
+  List<int>? genreIds;
+  int? id;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  String? releaseDate;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
+
   Result({
     this.adult,
     this.backdropPath,
@@ -17,21 +32,6 @@ class Result {
     this.voteAverage,
     this.voteCount,
   });
-
-  bool? adult;
-  String? backdropPath;
-  List<int>? genreIds;
-  int? id;
-  String? originalLanguage;
-  String? originalTitle;
-  String? overview;
-  double? popularity;
-  String? posterPath;
-  String? releaseDate;
-  String? title;
-  bool? video;
-  double? voteAverage;
-  int? voteCount;
 
   factory Result.fromJson(Map<String, dynamic> json) {
     return Result(
