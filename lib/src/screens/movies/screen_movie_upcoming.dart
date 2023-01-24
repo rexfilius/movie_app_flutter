@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/library.dart';
 
-class ScreenMoviePopular extends StatefulWidget {
-  const ScreenMoviePopular({super.key});
+class ScreenMovieUpcoming extends StatefulWidget {
+  const ScreenMovieUpcoming({super.key});
 
   @override
-  State<ScreenMoviePopular> createState() => _ScreenMoviePopularState();
+  State<ScreenMovieUpcoming> createState() => _ScreenMovieUpcomingState();
 }
 
-class _ScreenMoviePopularState extends State<ScreenMoviePopular> {
-  late Future<MoviePopular> moviePopular;
+class _ScreenMovieUpcomingState extends State<ScreenMovieUpcoming> {
+  late Future<MovieUpcoming> movieUpcoming;
   MovieApi movieApi = MovieApi();
 
   @override
   void initState() {
     super.initState();
-    moviePopular = movieApi.getPopularMovies();
+    movieUpcoming = movieApi.getUpcomingMovies();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Popular Movies'),
+        title: const Text('Upcoming Movies'),
       ),
       body: Column(
         children: [
           Expanded(
-            child: FutureBuilder<MoviePopular>(
-              future: moviePopular,
+            child: FutureBuilder<MovieUpcoming>(
+              future: movieUpcoming,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<Result> movies = snapshot.data!.results!;
@@ -42,10 +42,10 @@ class _ScreenMoviePopularState extends State<ScreenMoviePopular> {
                     },
                   );
                 }
-                return const Center(child: CircularProgressIndicator());
+                return const AnimatedMovieSummaryList();
               },
             ),
-          )
+          ),
         ],
       ),
     );
