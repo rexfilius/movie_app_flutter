@@ -22,7 +22,7 @@ extension ResultExtension on Result {
   }
 }
 
-extension TvShowResultExtension on TvShowResult {
+extension TvShowResultExtension on TvResult {
   Future<EntityTvShow> convertToDatabaseModel() async {
     final filePath = await saveShowImageToAppDirectory(this);
     return EntityTvShow(
@@ -37,7 +37,7 @@ extension TvShowResultExtension on TvShowResult {
       popularity: popularity,
       posterPath: filePath,
       voteAverage: voteAverage,
-      voteCount: voteCount,
+      voteCount: voteCount?.toInt(),
     );
   }
 }

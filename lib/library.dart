@@ -8,9 +8,14 @@ export 'src/utils/util_functions.dart';
 export 'src/utils/util_extensions.dart';
 export 'src/utils/app_colors.dart';
 export 'src/utils/app_styles.dart';
-export 'src/utils/animation/animated_shimmer.dart';
-export 'src/utils/animation/animated_now_showing_list.dart';
-export 'src/utils/animation/animated_movie_summary_list.dart';
+export 'src/utils/animation/animate_now_showing_list.dart';
+export 'src/utils/animation/animate_movie_summary_list.dart';
+export 'src/utils/animation/custom_splash_animation.dart';
+export 'src/utils/animation/shimmer_animation.dart';
+export 'src/utils/animation/shimmer_animator.dart';
+export 'src/utils/animation/animate_now_showing_tv_list.dart';
+export 'src/utils/animation/animate_tv_show_summary_list.dart';
+export 'src/utils/animation/animate_tv_show_trending_summary_list.dart';
 
 /// Widgets used at different parts of the UI
 export 'src/screens/widgets/util_widgets.dart';
@@ -40,7 +45,6 @@ export 'src/models/tv_show_popular.dart';
 export 'src/models/tv_show_top_rated.dart';
 export 'src/models/tv_show_trending.dart';
 export 'src/models/tv_trending_result.dart';
-export 'src/models/tv_show_result.dart';
 
 /// Data Sources - API and local database
 export 'src/data/remote_source/movie_api.dart';

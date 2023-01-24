@@ -57,7 +57,8 @@ class _ScreenTvShowState extends State<ScreenTvShow> {
                 ),
               );
             }
-            return const Center(child: CircularProgressIndicator());
+            return const AnimateNowShowingTvList();
+            //return const Center(child: CircularProgressIndicator());
           },
         ),
         const Align(

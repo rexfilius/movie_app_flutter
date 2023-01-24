@@ -1,34 +1,32 @@
-import 'package:movie_app_flutter/library.dart';
-
-class TvResult extends TvShowResult {
-  // String? backdropPath;
-  // String? firstAirDate;
-  // List<int>? genreIds;
-  // int? id;
-  // String? name;
-  // List<String>? originCountry;
-  // String? originalLanguage;
-  // String? originalName;
-  // String? overview;
-  // double? popularity;
-  // String? posterPath;
-  // double? voteAverage;
-  // int? voteCount;
+class TvResult {
+  String? backdropPath;
+  String? firstAirDate;
+  List<int>? genreIds;
+  int? id;
+  String? name;
+  List<String>? originCountry;
+  String? originalLanguage;
+  String? originalName;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  num? voteAverage;
+  num? voteCount;
 
   TvResult({
-    super.backdropPath,
-    super.firstAirDate,
-    super.genreIds,
-    super.id,
-    super.name,
-    super.originCountry,
-    super.originalLanguage,
-    super.originalName,
-    super.overview,
-    super.popularity,
-    super.posterPath,
-    super.voteAverage,
-    super.voteCount,
+    this.backdropPath,
+    this.firstAirDate,
+    this.genreIds,
+    this.id,
+    this.name,
+    this.originCountry,
+    this.originalLanguage,
+    this.originalName,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.voteAverage,
+    this.voteCount,
   });
 
   factory TvResult.fromJson(Map<String, dynamic> json) {
@@ -44,8 +42,8 @@ class TvResult extends TvShowResult {
       overview: json["overview"],
       popularity: json["popularity"],
       posterPath: json["poster_path"],
-      voteAverage: json["vote_average"],
-      voteCount: json["vote_count"],
+      voteAverage: json["vote_average"] as num?,
+      voteCount: json["vote_count"] as num?,
     );
   }
 

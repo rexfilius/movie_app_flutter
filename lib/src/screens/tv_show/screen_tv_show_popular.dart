@@ -45,7 +45,7 @@ class _ScreenTvShowPopularState extends State<ScreenTvShowPopular> {
                     },
                   );
                 }
-                return const Center(child: CircularProgressIndicator());
+                return const AnimateTvShowSummaryList();
               },
             ),
           )

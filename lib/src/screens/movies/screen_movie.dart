@@ -58,7 +58,7 @@ class _ScreenMovieState extends State<ScreenMovie> {
               );
             }
             //return const CircularProgressIndicator();
-            return const AnimatedNowShowingList();
+            return const AnimateNowShowingList();
           },
         ),
         const Align(

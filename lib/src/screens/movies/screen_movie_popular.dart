@@ -42,7 +42,7 @@ class _ScreenMoviePopularState extends State<ScreenMoviePopular> {
                     },
                   );
                 }
-                return const AnimatedMovieSummaryList();
+                return const AnimateMovieSummaryList();
               },
             ),
           )

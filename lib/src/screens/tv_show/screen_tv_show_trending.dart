@@ -45,7 +45,7 @@ class _ScreenTvShowTrendingState extends State<ScreenTvShowTrending> {
                     },
                   );
                 }
-                return const Center(child: CircularProgressIndicator());
+                return const AnimateTvShowTrendingSummaryList();
               },
             ),
           ),

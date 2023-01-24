@@ -42,7 +42,7 @@ class _ScreenMovieTrendingState extends State<ScreenMovieTrending> {
                     },
                   );
                 }
-                return const AnimatedMovieSummaryList();
+                return const AnimateMovieSummaryList();
               },
             ),
           ),

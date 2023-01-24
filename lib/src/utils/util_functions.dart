@@ -15,7 +15,7 @@ Future<String> getMovieImageFilePath(Result movie) async {
 
 /// This function returns the file path of where a [EntityTvShow] poster image
 /// will be saved on the app directory
-Future<String> getShowImageFilePath(TvShowResult tvShow) async {
+Future<String> getShowImageFilePath(TvResult tvShow) async {
   final directory = await getApplicationDocumentsDirectory();
   final filePath = directory.path; //directory.path + 'images';
   await Directory(filePath).create(recursive: true);
@@ -57,7 +57,7 @@ Future<String> saveMovieImageToAppDirectory(Result movie) async {
 /// just working inside the app's directory and not the phone's storage.
 ///
 /// It returns the file path of where the image is.
-Future<String> saveShowImageToAppDirectory(TvShowResult tvShow) async {
+Future<String> saveShowImageToAppDirectory(TvResult tvShow) async {
   HttpClient httpClient = HttpClient();
   String imageFilePath;
   String imageUrl;

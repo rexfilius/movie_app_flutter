@@ -42,7 +42,7 @@ class _ScreenMovieUpcomingState extends State<ScreenMovieUpcoming> {
                     },
                   );
                 }
-                return const AnimatedMovieSummaryList();
+                return const AnimateMovieSummaryList();
               },
             ),
           ),

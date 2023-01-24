@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/library.dart';
 
-class AnimatedMovieSummaryList extends StatelessWidget {
-  const AnimatedMovieSummaryList({super.key});
+class AnimateTvShowTrendingSummaryList extends StatelessWidget {
+  const AnimateTvShowTrendingSummaryList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,15 +10,17 @@ class AnimatedMovieSummaryList extends StatelessWidget {
     double widgetHeight = 0.7 * screenWidth;
     double widgetWidth = 0.95 * screenWidth;
     return ListView.builder(
-      itemCount: 12,
+      itemCount: 10,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return SizedBox(
-          width: widgetWidth,
-          height: widgetHeight,
-          child: AnimatedShimmer(
-            height: widgetHeight,
-            width: widgetWidth,
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Shimmer(
+            color: Colors.blueGrey,
+            child: SizedBox(
+              width: widgetWidth,
+              height: widgetHeight,
+            ),
           ),
         );
       },

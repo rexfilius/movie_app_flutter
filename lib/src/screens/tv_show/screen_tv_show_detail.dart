@@ -7,7 +7,7 @@ class ScreenTvShowDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tvShow = ModalRoute.of(context)!.settings.arguments as TvShowResult;
+    final tvShow = ModalRoute.of(context)!.settings.arguments as TvResult;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: CustomScrollView(
