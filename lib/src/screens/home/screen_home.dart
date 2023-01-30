@@ -11,7 +11,6 @@ class ScreenHome extends StatefulWidget {
 class _ScreenHomeState extends State<ScreenHome> {
   static const List<Widget> _widgetOptions = [
     ScreenMovie(),
-    ScreenTvShow(),
     ScreenExplore(),
   ];
 
@@ -40,11 +39,7 @@ class _ScreenHomeState extends State<ScreenHome> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.movie),
-            label: 'Movie',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.tv),
-            label: 'TV Show',
+            label: 'Movies',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.saved_search),

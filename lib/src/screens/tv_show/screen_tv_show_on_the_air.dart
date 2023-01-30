@@ -1,33 +1,34 @@
 import 'package:movie_app_flutter/library.dart';
 import 'package:flutter/material.dart';
 
-class ScreenTvShowTopRated extends StatefulWidget {
-  const ScreenTvShowTopRated({super.key});
+class ScreenTvShowOnTheAir extends StatefulWidget {
+  const ScreenTvShowOnTheAir({super.key});
 
   @override
-  State<ScreenTvShowTopRated> createState() => _ScreenTvShowTopRatedState();
+  State<ScreenTvShowOnTheAir> createState() => _ScreenTvShowOnTheAirState();
 }
 
-class _ScreenTvShowTopRatedState extends State<ScreenTvShowTopRated> {
-  late Future<TvShowTopRated> tvShowTopRated;
+class _ScreenTvShowOnTheAirState extends State<ScreenTvShowOnTheAir> {
+  late Future<TvShowOnTheAir> tvShowOnAir;
   TvShowApi tvShowApi = TvShowApi();
 
   @override
   void initState() {
     super.initState();
-    tvShowTopRated = tvShowApi.getTopRatedTVShow();
+    tvShowOnAir = tvShowApi.getOnTheAirTVShow();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Top rated TV Shows'),
+        title: const Text('TV Shows On Air'),
       ),
       body: Column(
         children: [
           Expanded(
-            child: FutureBuilder<TvShowTopRated>(
+            child: FutureBuilder<TvShowOnTheAir>(
+              future: tvShowOnAir,
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Center(child: Text(snapshot.error.toString()));
@@ -44,10 +45,10 @@ class _ScreenTvShowTopRatedState extends State<ScreenTvShowTopRated> {
                     },
                   );
                 }
-                return const Center(child: CircularProgressIndicator());
+                return const AnimateTvShowSummaryList();
               },
             ),
-          ),
+          )
         ],
       ),
     );

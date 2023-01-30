@@ -18,57 +18,41 @@ class _ScreenExploreState extends State<ScreenExplore> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Material(
-          elevation: 14.0,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Bookmarked Movies',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.screenBookmarkMovie,
-                    );
-                  },
-                  icon: const Icon(Icons.navigate_next_sharp),
-                ),
-              ],
-            ),
-          ),
+        CardExplore(
+          title: 'Bookmarked Movies',
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              AppRoutes.screenBookmarkMovie,
+            );
+          },
         ),
-        Material(
-          elevation: 14.0,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Bookmarked TV Shows',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.screenBookmarkTvShow,
-                    );
-                  },
-                  icon: const Icon(Icons.navigate_next_sharp),
-                ),
-              ],
-            ),
-          ),
+        CardExplore(
+          title: 'Bookmarked TV Shows',
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              AppRoutes.screenBookmarkTvShow,
+            );
+          },
+        ),
+        CardExplore(
+          title: 'TV Shows (On the Air)',
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              AppRoutes.screenTvShowOnTheAir,
+            );
+          },
+        ),
+        CardExplore(
+          title: 'TV Shows (Popular)',
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              AppRoutes.screenTvShowPopular,
+            );
+          },
         ),
       ],
     );

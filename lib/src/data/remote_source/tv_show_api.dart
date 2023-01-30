@@ -56,42 +56,4 @@ class TvShowApi {
       throw e.toString();
     }
   }
-
-  /// Get a list of the top rated TV shows on TMDB.
-  /// DISABLED FOR NOW - IT TAKES A LONG TIME FOR REQUEST TO GO THROUGH
-  Future<TvShowTopRated> getTopRatedTVShow() async {
-    const String url = "${tvBaseUrl}tv/top_rated?api_key=$apiKey";
-    try {
-      final response = await client.get(Uri.parse(url));
-      if (response.statusCode == 200) {
-        return TvShowTopRated.fromJson(jsonDecode(response.body));
-      } else {
-        throw '${response.body} - failed to get top rated TV show';
-      }
-    } on SocketException {
-      throw 'You are not connected to the internet';
-    } catch (e) {
-      throw e.toString();
-    }
-  }
-
-  /// Get the daily or weekly trending items. The daily trending list tracks
-  /// items over the period of a day while items have a 24 hour half life.
-  /// The weekly list tracks items over a 7 day period, with a 7 day half life.
-  Future<TvShowTrending> getTrendingTVShow() async {
-    const String url = "${tvBaseUrl}trending/tv/day?api_key=$apiKey";
-    try {
-      final response = await client.get(Uri.parse(url));
-
-      if (response.statusCode == 200) {
-        return TvShowTrending.fromJson(jsonDecode(response.body));
-      } else {
-        throw '${response.body} - failed to get trending TV show';
-      }
-    } on SocketException {
-      throw 'You are not connected to the internet';
-    } catch (e) {
-      throw e.toString();
-    }
-  }
 }
