@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/library.dart';
 
-class LoadingListState extends StatelessWidget {
-  const LoadingListState({
+class LoadingText extends StatelessWidget {
+  const LoadingText({
     required this.text,
     Key? key,
   }) : super(key: key);
@@ -21,8 +21,8 @@ class LoadingListState extends StatelessWidget {
   }
 }
 
-class ErrorListState extends StatelessWidget {
-  const ErrorListState({
+class ErrorText extends StatelessWidget {
+  const ErrorText({
     required this.text,
     Key? key,
   }) : super(key: key);

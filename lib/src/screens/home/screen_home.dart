@@ -31,6 +31,17 @@ class _ScreenHomeState extends State<ScreenHome> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Cinema'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () async {
+              showSearch(
+                context: context,
+                delegate: MovieSearchDelegate(),
+              );
+            },
+          ),
+        ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(

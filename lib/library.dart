@@ -14,6 +14,7 @@ export 'src/utils/animation/custom_splash_animation.dart';
 export 'src/utils/animation/shimmer_animation.dart';
 export 'src/utils/animation/shimmer_animator.dart';
 export 'src/utils/animation/animate_tv_show_summary_list.dart';
+export 'src/utils/animation/animated_scroll_view.dart';
 
 /// Widgets used at different parts of the UI
 export 'src/screens/widgets/util_widgets.dart';

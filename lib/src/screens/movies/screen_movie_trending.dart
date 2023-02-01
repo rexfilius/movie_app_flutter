@@ -33,6 +33,9 @@ class _ScreenMovieTrendingState extends State<ScreenMovieTrending> {
                 if (snapshot.hasData) {
                   List<Result> movies = snapshot.data!.results!;
                   return ListView.builder(
+                    physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
+                    ),
                     itemCount: movies.length,
                     itemBuilder: (context, index) {
                       return CardMovieSummary(
