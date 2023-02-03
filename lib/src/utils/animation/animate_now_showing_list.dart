@@ -7,8 +7,8 @@ class AnimateNowShowingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double movieCardWidth = 0.65 * screenWidth;
-    double movieCardHeight = 0.9 * screenWidth;
+    double movieCardWidth = 0.6 * screenWidth;
+    double movieCardHeight = 0.8 * screenWidth;
     return Flexible(
       child: ListView.builder(
         itemCount: 5,

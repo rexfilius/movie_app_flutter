@@ -20,6 +20,7 @@ class _ScreenMovieState extends State<ScreenMovie> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       children: [
         const Align(
