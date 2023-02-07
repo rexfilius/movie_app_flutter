@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/library.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class CardNowShowing extends StatelessWidget {
   const CardNowShowing({
@@ -26,21 +27,13 @@ class CardNowShowing extends StatelessWidget {
           );
         }
       },
-      child: Material(
-        elevation: 14.0,
-        child: Container(
-          margin: const EdgeInsets.all(8.0),
-          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        child: SizedBox(
           width: 0.5 * screenWidth,
-          height: 0.2 * screenWidth,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: CachedNetworkImageProvider(
-                "$movieBaseUrlImage${movie.posterPath}",
-              ),
-            ),
+          height: 0.7 * screenWidth,
+          child: CachedNetworkImage(
+            imageUrl: "$movieBaseUrlImage${movie.posterPath}",
           ),
         ),
       ),
