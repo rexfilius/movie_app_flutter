@@ -12,7 +12,6 @@ abstract class AppRoutes {
   static const screenMovieDetail = 'movie_detail_screen';
   static const screenTvShowPopular = 'tvShow_popular_screen';
   static const screenTvShowDetail = 'tvShow_detail_screen';
-  static const screenTvShowOnTheAir = 'tvShow_on_air_screen';
   static const screenBookmarkMovie = 'movie_bookmark_screen';
   static const screenBookmarkTvShow = 'tvShow_bookmark_screen';
 }
@@ -28,7 +27,6 @@ Map<String, Widget Function(BuildContext)> appRoutesMap = {
   AppRoutes.screenMovieDetail: (context) => const ScreenMovieDetail(),
   AppRoutes.screenTvShowPopular: (context) => const ScreenTvShowPopular(),
   AppRoutes.screenTvShowDetail: (context) => const ScreenTvShowDetail(),
-  AppRoutes.screenTvShowOnTheAir: (context) => const ScreenTvShowOnTheAir(),
   AppRoutes.screenBookmarkMovie: (context) => const ScreenBookmarkMovie(),
   AppRoutes.screenBookmarkTvShow: (context) => const ScreenBookmarkTvShow(),
 };

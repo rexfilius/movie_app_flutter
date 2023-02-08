@@ -11,6 +11,7 @@ class ScreenBookmarkMovie extends StatefulWidget {
 
 class _ScreenBookmarkMovieState extends State<ScreenBookmarkMovie> {
   final bookmarkedMovies = HiveDatabase().getMovieListFromDatabase();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

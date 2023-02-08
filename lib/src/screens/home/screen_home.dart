@@ -50,7 +50,7 @@ class _ScreenHomeState extends State<ScreenHome> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.movie),
-            label: 'Movies',
+            label: 'Cinema',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.saved_search),

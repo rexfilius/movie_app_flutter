@@ -11,13 +11,17 @@ class ScreenMovie extends StatefulWidget {
 class _ScreenMovieState extends State<ScreenMovie> {
   late Future<MovieNowPlaying> movieNowPlaying;
   late Future<MovieUpcoming> movieUpcoming;
+  late Future<TvShowOnTheAir> tvShowOnAir;
+  //
   MovieApi movieApi = MovieApi();
+  TvShowApi tvShowApi = TvShowApi();
 
   @override
   void initState() {
     super.initState();
     movieNowPlaying = movieApi.getNowPlayingMovies();
     movieUpcoming = movieApi.getUpcomingMovies();
+    tvShowOnAir = tvShowApi.getOnTheAirTVShow();
   }
 
   @override
@@ -33,7 +37,7 @@ class _ScreenMovieState extends State<ScreenMovie> {
           child: Padding(
             padding: EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
             child: Text(
-              'Now Showing',
+              'Movies (Now Showing)',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -76,12 +80,41 @@ class _ScreenMovieState extends State<ScreenMovie> {
           child: Padding(
             padding: EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
             child: Text(
-              'Upcoming Movies',
+              'TV Shows (On Air)',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
+          ),
+        ),
+        SizedBox(
+          width: 0.55 * screenWidth,
+          height: 0.75 * screenWidth,
+          child: FutureBuilder<TvShowOnTheAir>(
+            future: tvShowOnAir,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Center(child: Text(snapshot.error.toString()));
+              }
+              if (snapshot.hasData) {
+                List<TvResult> tvShowList = snapshot.data!.results!;
+                return ListView.builder(
+                  physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics(),
+                  ),
+                  itemCount: tvShowList.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return CardNowShowingTV(
+                      tvShow: tvShowList[index],
+                      clickable: true,
+                    );
+                  },
+                );
+              }
+              return const AnimateNowShowingList();
+            },
           ),
         ),
         const Align(

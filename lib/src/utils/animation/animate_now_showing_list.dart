@@ -15,7 +15,7 @@ class AnimateNowShowingList extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Shimmer(
-            color: Colors.blueGrey,
+            color: Colors.grey.shade700,
             child: SizedBox(
               width: 0.5 * screenWidth,
               height: 0.7 * screenWidth,

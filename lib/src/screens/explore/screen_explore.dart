@@ -37,15 +37,6 @@ class _ScreenExploreState extends State<ScreenExplore> {
           },
         ),
         CardExplore(
-          title: 'TV Shows (On the Air)',
-          onPressed: () {
-            Navigator.pushNamed(
-              context,
-              AppRoutes.screenTvShowOnTheAir,
-            );
-          },
-        ),
-        CardExplore(
           title: 'TV Shows (Popular)',
           onPressed: () {
             Navigator.pushNamed(
